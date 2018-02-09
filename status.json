@@ -1,0 +1,41 @@
+{
+    "name": "Krautspace space status",
+    "closing_text": [
+        {
+            "text": "#krautspace is closed.",
+            "limitperweek": 9000
+        },
+        {
+            "text": "Last person left #krautspace",
+            "limitperweek": 9000
+        },
+        {
+            "text": "Closing #krautspace. We're sorry you need to wait outside, but there is always @freifunkjena to distract you.",
+            "limitperweek": 1
+        },
+        {
+            "text": "Currently, there is no light in #krautspace, so why not walk the beautiful @jenalichtstadt?",
+            "limitperweek": 1
+        },
+        {
+            "text": "#krautspace is zu, aber @offenesjena ist immer offen.",
+            "limitperweek": 1
+        }
+    ],
+    "opening_text": [
+        {
+            "text": "#krautspace is open.",
+            "limitperweek": 9000
+        },
+        {
+            "text": "At least one person is in #krautspace and invites you to come and join hacking!",
+            "limitperweek": 9000
+        }
+    ],
+    "uncertain_text": [
+        {
+            "text": "people in #krautspace want their privacy",
+            "limitperweek": 9000
+        }
+    ]
+}
