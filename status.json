@@ -2,40 +2,53 @@
     "name": "Krautspace space status",
     "closing_text": [
         {
-            "text": "#krautspace is closed.",
-            "limitperweek": 9000
+            "text": "Krautspace ist geschlossen."
         },
         {
-            "text": "Last person left #krautspace",
-            "limitperweek": 9000
+            "text": "#krautspace is closed."
         },
         {
-            "text": "Closing #krautspace. We're sorry you need to wait outside, but there is always @freifunkjena to distract you.",
-            "limitperweek": 1
+            "text": "Last person left #krautspace"
         },
         {
-            "text": "Currently, there is no light in #krautspace, so why not walk the beautiful @jenalichtstadt?",
-            "limitperweek": 1
+            "text": "Closing #krautspace. We're sorry you need to wait outside, but there is always @freifunkjena to distract you."
         },
         {
-            "text": "#krautspace is zu, aber @offenesjena ist immer offen.",
-            "limitperweek": 1
+            "text": "Currently, there is no light in #krautspace, so why not walk the beautiful @jenalichtstadt?"
+        },
+        {
+            "text": "#krautspace is zu, aber @offenesjena ist immer offen."
+        },
+        {
+            "text": "The space is closed, but our chat https://kraut.space/chat/ is always there for you!"
+        },
+        {
+            "text": "#Krautspace ist zu, aber andere St\u00e4dte haben auch sch\u00f6ne #hackerspaces."
+        },
+        {
+            "text": "Dave Bowman: \"Open the Krautspace doors, HAL.\" | HAL9000: \" I'm sorry, Dave. I'm afraid I can't do that.\""
         }
     ],
     "opening_text": [
         {
-            "text": "#krautspace is open.",
-            "limitperweek": 9000
+            "text": "Krautspace ist besetzt."
         },
         {
-            "text": "At least one person is in #krautspace and invites you to come and join hacking!",
-            "limitperweek": 9000
+            "text": "#krautspace is open."
+        },
+        {
+            "text": "At least one person is in #krautspace and invites you to come and join hacking!"
+        },
+        {
+            "text": "One Ping Only! .... Ping, #krautspace is open."
+        },
+        {
+            "text": "Booting up #krautspace.... space is open!"
         }
     ],
     "uncertain_text": [
         {
-            "text": "people in #krautspace want their privacy",
-            "limitperweek": 9000
+            "text": "people in #krautspace want their privacy"
         }
     ]
 }

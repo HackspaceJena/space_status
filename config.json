@@ -1,0 +1,14 @@
+{
+    "name": "Krautspace space status",
+    "status_api": {
+        "url": "https://status.kraut.space/api",
+        "standard": "space.api",
+        "checking_period": 300
+    },
+    "twitter_api": {
+        "consumer_key": "fill in your data!",
+        "consumer_secret": "fill in your data!",
+        "token": "fill in your data!",
+        "token_secret": "fill in your data!"
+    }
+}
