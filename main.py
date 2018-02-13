@@ -5,6 +5,8 @@ import os
 import time
 import urllib.request, json
 import datetime
+import tweepy
+import random
 
 def internet_on(url):
     try:
@@ -15,12 +17,35 @@ def internet_on(url):
         return False
 
 
+def textselect(min, max):
+    number = random.randint(0, 1)
+
+    if number == 0:
+        return 0
+    else:
+        return random.randint(min, max)
+
+
+
 while True:
 
     # starting by configuring the bot
     file_configure_path = "config.json"
     with open(file_configure_path, 'r') as f:
         data_config = json.load(f)
+
+    path = data_config["path"]
+
+    CONSUMER_KEY = data_config["twitter_api"]["consumer_key"]
+    CONSUMER_SECRET = data_config["twitter_api"]["consumer_secret"]
+    ACCESS_KEY = data_config["twitter_api"]["token"]
+    ACCESS_SECRET = data_config["twitter_api"]["token_secret"]
+    print(CONSUMER_KEY)
+
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+    api = tweepy.API(auth)
+
 
     if internet_on("http://twitter.com") == True:
 
@@ -31,19 +56,19 @@ while True:
             #print(data_space["state"]["open"])
 
 
-
-        file_path = "space.json"
+        file_path = path + "space.json"
         if os.path.exists(file_path) == True:
             # Reading data back
             with open(file_path, 'r') as f:
                 data_space_b4 = json.load(f)
                 #print(data_space_b4["state"]["open"])
 
+
             if data_space["state"]["open"] != data_space_b4["state"]["open"]:
                 print("status changed.")
 
                 # starting by configuring the bot
-                file_status_path = "status.json"
+                file_status_path = path + "status.json"
                 with open(file_status_path, 'r') as f:
                     data_status = json.load(f)
 
@@ -53,13 +78,24 @@ while True:
                     print("closing at", time.time(), ",last change happend at", datetime.datetime.fromtimestamp(
                         int(data_space["state"]["lastchange"]) ).strftime('%Y-%m-%d %H:%M:%S'))
 
-                    print("Text:", data_status["closing_text"][0]["text"])
+                    number = len(data_status["closing_text"])
+                    number = textselect(0, number - 1)
+
+                    text = data_status["closing_text"][number]["text"]
+                    print("Text:", text)
+                    api.update_status(text)
+                    # same text as before cannot be posted!
 
                 else:
                     print("opening at", time.time(), ",last change happend at", datetime.datetime.fromtimestamp(
                         int(data_space["state"]["lastchange"]) ).strftime('%Y-%m-%d %H:%M:%S'))
 
-                    print("Text:", data_status["opening_text"][0]["text"])
+                    number = len(data_status["opening_text"])
+                    number = textselect(0, number - 1)
+
+                    text = data_status["opening_text"][number]["text"]
+                    print("Text:", text)
+                    api.update_status(text)
 
 
             else:
