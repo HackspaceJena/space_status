@@ -7,6 +7,9 @@ import urllib.request, json
 import datetime
 import tweepy
 import random
+path = os.path.abspath(__file__)
+dir_path = os.path.dirname(path)
+print("dir path is", dir_path)
 
 def internet_on(url):
     try:
@@ -25,12 +28,15 @@ def textselect(min, max):
     else:
         return random.randint(min, max)
 
-
+def log(out):
+    f = open("log.csv", "a")
+    f.write(out)
+    f.close()
 
 while True:
 
     # starting by configuring the bot
-    file_configure_path = "config.json"
+    file_configure_path = dir_path + os.sep + "config.json"
     with open(file_configure_path, 'r') as f:
         data_config = json.load(f)
 
@@ -72,6 +78,7 @@ while True:
                 with open(file_status_path, 'r') as f:
                     data_status = json.load(f)
 
+                time_now = time.time()
 
                 # finding out wich state it change and sending out the text
                 if data_space["state"]["open"] == False:
@@ -86,6 +93,9 @@ while True:
                     api.update_status(text)
                     # same text as before cannot be posted!
 
+                    log(str(time_now) + ";" + data_space["state"]["lastchange"] + ";" + str(data_space["state"]["open"])
+                        + ";" + str(number) + "\n")
+
                 else:
                     print("opening at", time.time(), ",last change happend at", datetime.datetime.fromtimestamp(
                         int(data_space["state"]["lastchange"]) ).strftime('%Y-%m-%d %H:%M:%S'))
@@ -97,13 +107,16 @@ while True:
                     print("Text:", text)
                     api.update_status(text)
 
+                    log(str(time_now) + ";" + data_space["state"]["lastchange"] + ";" + str(data_space["state"]["open"])
+                        + ";" + str(number) + "\n")
+
 
             else:
                 print("status is still the same at", time.time(), datetime.datetime.fromtimestamp(
                     int(data_space["state"]["lastchange"]) ).strftime('%Y-%m-%d %H:%M:%S'))
 
         else:
-            print("welcome to your initial round")
+            print("We're back, baby! #Krautspace space status is active again. @HackspaceJena")
 
 
         # saving the current space status just too compare them in the next round
