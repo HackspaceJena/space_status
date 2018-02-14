@@ -29,7 +29,7 @@ def textselect(min, max):
         return random.randint(min, max)
 
 def log(out):
-    f = open("log.csv", "a")
+    f = open(dir_path + os.sep + "log.csv", "a")
     f.write(out)
     f.close()
 
@@ -88,12 +88,15 @@ while True:
                     number = len(data_status["closing_text"])
                     number = textselect(0, number - 1)
 
-                    text = data_status["closing_text"][number]["text"]
+                    text = data_status["closing_text"][number]["text"] + " " + datetime.datetime.fromtimestamp(
+                        int( time_now + 3600 )).strftime('%Y-%m-%d %H:%M:%S')
+                    
+                    print("Text:", text)
                     print("Text:", text)
                     api.update_status(text)
                     # same text as before cannot be posted!
 
-                    log(str(time_now) + ";" + data_space["state"]["lastchange"] + ";" + str(data_space["state"]["open"])
+                    log(str(time_now) + ";" + str(data_space["state"]["lastchange"]) + ";" + str(data_space["state"]["open"])
                         + ";" + str(number) + "\n")
 
                 else:
@@ -103,11 +106,13 @@ while True:
                     number = len(data_status["opening_text"])
                     number = textselect(0, number - 1)
 
-                    text = data_status["opening_text"][number]["text"]
+                    text = data_status["opening_text"][number]["text"] + " " + datetime.datetime.fromtimestamp(
+                        int( time_now + 3600 )).strftime('%Y-%m-%d %H:%M:%S')
+                    
                     print("Text:", text)
                     api.update_status(text)
 
-                    log(str(time_now) + ";" + data_space["state"]["lastchange"] + ";" + str(data_space["state"]["open"])
+                    log(str(time_now) + ";" + str(data_space["state"]["lastchange"]) + ";" + str(data_space["state"]["open"])
                         + ";" + str(number) + "\n")
 
 
