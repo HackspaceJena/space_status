@@ -88,10 +88,9 @@ while True:
                     number = len(data_status["closing_text"])
                     number = textselect(0, number - 1)
 
-                    text = data_status["closing_text"][number]["text"] + " " + datetime.datetime.fromtimestamp(
-                        int( time_now + 3600 )).strftime('%Y-%m-%d %H:%M:%S')
+                    text = data_status["closing_text"][number]["text"] + " [closed:" + datetime.datetime.fromtimestamp(
+                        int( time_now + 3600 )).strftime('%Y-%m-%d %H:%M:%S') + "]"
                     
-                    print("Text:", text)
                     print("Text:", text)
                     api.update_status(text)
                     # same text as before cannot be posted!
@@ -106,8 +105,8 @@ while True:
                     number = len(data_status["opening_text"])
                     number = textselect(0, number - 1)
 
-                    text = data_status["opening_text"][number]["text"] + " " + datetime.datetime.fromtimestamp(
-                        int( time_now + 3600 )).strftime('%Y-%m-%d %H:%M:%S')
+                    text = data_status["opening_text"][number]["text"] + " [open:" + datetime.datetime.fromtimestamp(
+                        int( time_now + 3600 )).strftime('%Y-%m-%d %H:%M:%S') + "]"
                     
                     print("Text:", text)
                     api.update_status(text)
