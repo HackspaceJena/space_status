@@ -75,6 +75,15 @@
         },
         {
             "text": "Krautspace 503 - Service Unavailable."
+        },
+        {
+            "text": "member: \"shutdown\". krautspace: \"no\". member: \"sudo shutdown\". krautspace: \"ok, shutting down, bye!\""
+        },
+        {
+            "text": "Wir sind nun zu, aber wenn du eine Projektidee f\u00fcr zu hause brauchst, warum nicht einen weiteren @airrohr Feinstaubsensor f\u00fcr #Jena aufstellen? @luftdaten #Feinstaubalarm #PM10 http://deutschland.maps.luftdaten.info/#13/50.9294/11.5825"
+        },
+        {
+            "text": "Krautspace ist nun zu. Nein? Doch! Oh!"
         }
     ],
     "opening_text": [
@@ -134,6 +143,18 @@
         },
         {
             "text": "The krautspace is open, come on over for a cold #ClubMate. https://matemonkey.com/map/dealer/krautspace?@=17,50.928943,11.586419 @matemonkeycom"
+        },
+        {
+            "text": "Beep beep, I'm open for hacking visitors!"
+        },
+        {
+            "text": "Welcome to Krautspace, your #Jena hackerspace!"
+        },
+        {
+            "text": "Hello member, I missed you."
+        },
+        {
+            "text": "Heute im #Krautspace >> https://kraut.space"
         }
     ],
     "uncertain_text": [
