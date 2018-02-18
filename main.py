@@ -92,8 +92,11 @@ while True:
                         int( time_now + 3600 )).strftime('%Y-%m-%d %H:%M:%S') + "]"
                     
                     print("Text:", text)
-                    api.update_status(text)
-                    # same text as before cannot be posted!
+                    try:
+                        api.update_status(text)
+                        # same text as before cannot be posted!
+                    except:
+                        print(time_now, "did not tweet closing status")
 
                     log(str(time_now) + ";" + str(data_space["state"]["lastchange"]) + ";" + str(data_space["state"]["open"])
                         + ";" + str(number) + "\n")
@@ -109,7 +112,10 @@ while True:
                         int( time_now + 3600 )).strftime('%Y-%m-%d %H:%M:%S') + "]"
                     
                     print("Text:", text)
-                    api.update_status(text)
+                    try:
+                        api.update_status(text)
+                    except:
+                        print(time_now, "did not tweet opening status")
 
                     log(str(time_now) + ";" + str(data_space["state"]["lastchange"]) + ";" + str(data_space["state"]["open"])
                         + ";" + str(number) + "\n")
