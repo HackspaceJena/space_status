@@ -120,6 +120,9 @@
         },
         {
             "text": "E-DOOR says: Space is CLOSED!"
+        },
+        {
+            "text": "Der @HackspaceJena beendet die #Spacetime!"
         }
     ],
     "opening_text": [
@@ -200,6 +203,9 @@
         },
         {
             "text": "E-DOOR says: Space is OPEN!"
+        },
+        {
+            "text": "#Spacetime im @HackspaceJena!"
         }
     ],
     "uncertain_text": [
