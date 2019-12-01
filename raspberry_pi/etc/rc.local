@@ -18,6 +18,6 @@ if [ "$_IP" ]; then
 fi
 
 sleep 20
-sudo python3 /home/pi/Schreibtisch/button.py &
+sudo python3 /home/pi/PathToDoorStatusFolder/main.py &
 
 exit 0
