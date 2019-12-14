@@ -1,0 +1,12 @@
+[Unit]
+Description=Space Status Python Script
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+WorkingDirectory=/home/pi/PathToDoorStatusFolder/
+ExecStart=python3 main.py
+
+[Install]
+WantedBy=multi-user.target
+
