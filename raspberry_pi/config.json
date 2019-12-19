@@ -13,7 +13,7 @@
         "token_secret": "fill in your data!"
     },
     "mastodon_api": {
-        "caccess_token": "fill in your data!",
+        "access_token": "fill in your data!",
         "api_base_url": "fill in your data!"
     }
 }

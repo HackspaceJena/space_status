@@ -1,282 +1,310 @@
 {
     "name": "Krautspace space status",
+    "text_mode" : {"universal" : 0, "twitter" : 1, "mastodon" : 2},
     "closing_text": [
         {
-            "text": "Krautspace ist geschlossen."
+            "text": {"universal" : "Krautspace ist geschlossen."}
         },
         {
-            "text": "#krautspace is closed."
+            "text": {"universal" : "#krautspace is closed."}
         },
         {
-            "text": "Last person left #krautspace"
+            "text": {"universal" : "Last person left #krautspace"}
         },
         {
-            "text": "Closing #krautspace. We're sorry you need to wait outside, but there is always @freifunkjena to distract you."
+            "text": {"universal" : "Closing #krautspace. We're sorry you need to wait outside, but there is always @freifunkjena to distract you."}
         },
         {
-            "text": "Currently, there is no light in #krautspace, so why not walk the beautiful @jenalichtstadt?"
+            "text": {"universal" : "Currently, there is no light in #krautspace, so why not walk the beautiful @jenalichtstadt?"}
         },
         {
-            "text": "#krautspace is zu, aber @offenesjena ist immer offen."
+            "text": {"universal" : "#krautspace is zu, aber @offenesjena ist immer offen."}
         },
         {
-            "text": "The space is closed, but our chat https://kraut.space/chat/ is always there for you!"
+            "text": {"universal" : "The space is closed, but our chat https://kraut.space/chat/ is always there for you!"}
         },
         {
-            "text": "#Krautspace ist zu, aber andere St\u00e4dte haben auch sch\u00f6ne #hackerspaces."
+            "text": {"universal" : "#Krautspace ist zu, aber andere St\u00e4dte haben auch sch\u00f6ne #hackerspaces."}
         },
         {
-            "text": "Dave Bowman: \"Open the Krautspace doors, HAL.\" | HAL9000: \" I'm sorry, Dave. I'm afraid I can't do that.\""
+            "text": {"universal" : "Dave Bowman: \"Open the Krautspace doors, HAL.\" | HAL9000: \" I'm sorry, Dave. I'm afraid I can't do that.\""}
         },
         {
-            "text": "Der Krautspace hat zu. Aber ihr k\u00f6nnt ja unsere Nachbarn, den @maschinenrauM18, in #Weimar besuchen, w\u00e4hrend ihr wartet."
+            "text": {
+                "universal" : "Der Krautspace hat zu. Aber ihr k\u00f6nnt ja unsere Nachbarn, den @maschinenrauM18, in #Weimar besuchen, w\u00e4hrend ihr wartet.",
+                "mastodon" : "Der Krautspace hat zu. Aber ihr k\u00f6nnt ja unsere Nachbarn, den @maschinenraum@social.bau-ha.us, in #Weimar besuchen, w\u00e4hrend ihr wartet."
+            }
         },
         {
-            "text": "Der Krautspace wurde geschlossen. Mitglieder sind wohl nach Hause oder auf den Weg zum @bytespeicher_ef in #Erfurt."
+            "text": {
+                "universal" : "Der Krautspace wurde geschlossen. Mitglieder sind wohl nach Hause oder auf den Weg zum @bytespeicher_ef in #Erfurt.",
+                "mastodon" : "Der Krautspace wurde geschlossen. Mitglieder sind wohl nach Hause oder auf den Weg zum @bytespeicher@social.bau-ha.us in #Erfurt."
+            }
         },
         {
-            "text": "Wir sind jetzt leider zu. Sollen wir euch die Horden an Hackern zum @ebkhalle nach #Halle r\u00fcberschicken?"
+            "text": {"universal" : "Wir sind jetzt leider zu. Sollen wir euch die Horden an Hackern zum @ebkhalle nach #Halle r\u00fcberschicken?"}
         },
         {
-            "text": "Wir sind nun zu. Wie sieht es bei euch aus im C3D2 @pentafnord? #Dresden"
+            "text": {
+                "universal" : "Wir sind nun zu. Wie sieht es bei euch aus im C3D2 @pentafnord? #Dresden.",
+                "mastodon" : "Wir sind nun zu. Wie sieht es bei euch aus im C3D2 @c3d2@bots.tinysubversions.com? #Dresden."
+            }
         },
         {
-            "text": "...aaaaand it's gone! Krautspace is closed https://www.youtube.com/watch?v=DNLob2E_Q5s"
+            "text": {"universal" : "...aaaaand it's gone! Krautspace is closed https://www.youtube.com/watch?v=DNLob2E_Q5s"}
         },
         {
-            "text": "Lichter im Krautspace sind nun aus. F\u00fcr mehr Lichter kann man auch gut in die @LichtwerkstattJ gehen."
+            "text": {"universal" : "Lichter im Krautspace sind nun aus. F\u00fcr mehr Lichter kann man auch gut in die @LichtwerkstattJ gehen."}
         },
         {
-            "text": "Heut is nicht alle Tage, Krautspace kommt wieder keine Frage!! https://www.youtube.com/watch?v=JRL5Z1k60tg"
+            "text": {"universal" : "Heut is nicht alle Tage, Krautspace kommt wieder keine Frage!! https://www.youtube.com/watch?v=JRL5Z1k60tg"}
         },
         {
-            "text": "Du musst was reparieren? Krautspace ist nun leider zu, aber schau doch mal beim @RepairCafe_Jena vorbei."
+            "text": {"universal" : "Du musst was reparieren? Krautspace ist nun leider zu, aber schau doch mal beim @RepairCafe_Jena vorbei."}
         },
         {
-            "text": "Der Space ist jetzt zu und du kannst weiterhin neue \"Wir sind zu\" Spr\u00fcche zu unserem Twitter Bot auf @Github hinzuf\u00fcgen https://github.com/HackspaceJena/space_status "
+            "text": {"universal" : "Der Space ist jetzt zu und du kannst weiterhin neue \"Wir sind zu\" Spr\u00fcche zu unserem Twitter Bot auf @Github hinzuf\u00fcgen https://github.com/HackspaceJena/space_status "}
         },
         {
-            "text": "Brautkleid bleibt Brautkleid, und Krautspace bleibt Krautspace, auch wenn er zu ist, wie jetzt..."
+            "text": {"universal" : "Brautkleid bleibt Brautkleid, und Krautspace bleibt Krautspace, auch wenn er zu ist, wie jetzt..."}
         },
         {
-            "text": "Der Krautspace ist zu und du weisst nicht, was du tun kannst? Lies doch mal ein Buch im @EAB_Jena?"
+            "text": {"universal" : "Der Krautspace ist zu und du weisst nicht, was du tun kannst? Lies doch mal ein Buch im @EAB_Jena?"}
         },
         {
-            "text": "BEE DOO BEE DOO BEE DOO - space is closed. https://www.youtube.com/watch?v=ZvvF_N2XD8w "
+            "text": {"universal" : "BEE DOO BEE DOO BEE DOO - space is closed. https://www.youtube.com/watch?v=ZvvF_N2XD8w "}
         },
         {
-            "text": "Krautspace is closed and before you intend to defy the weather outside while reaching us, check our @SenseBox_De https://opensensemap.org/explore/59d7de4c66f66a0010797868 "
+            "text": {"universal" : "Krautspace is closed and before you intend to defy the weather outside while reaching us, check our @SenseBox_De https://opensensemap.org/explore/59d7de4c66f66a0010797868 "}
         },
         {
-            "text": "Why not leaving Krautspace with an earworm?! Bye Bye bye....! https://www.youtube.com/watch?v=Eo-KmOd3i7s "
+            "text": {"universal" : "Why not leaving Krautspace with an earworm?! Bye Bye bye....! https://www.youtube.com/watch?v=Eo-KmOd3i7s "}
         },
         {
-            "text": "Matelos, durch die Nacht.... *singend beim Zuschlie\u00dfen des Krautspaces."
+            "text": {"universal" : "Matelos, durch die Nacht.... *singend beim Zuschlie\u00dfen des Krautspaces."}
         },
         {
-            "text": "Krautspace 503 - Service Unavailable."
+            "text": {"universal" : "Krautspace 503 - Service Unavailable."}
         },
         {
-            "text": "member: \"shutdown\". krautspace: \"no\". member: \"sudo shutdown\". krautspace: \"ok, shutting down, bye!\""
+            "text": {"universal" : "member: \"shutdown\". krautspace: \"no\". member: \"sudo shutdown\". krautspace: \"ok, shutting down, bye!\""}
         },
         {
-            "text": "Wir sind nun zu, aber wenn du eine Projektidee f\u00fcr zu hause brauchst, warum nicht einen weiteren @airrohr Feinstaubsensor f\u00fcr #Jena aufstellen? @luftdaten #Feinstaubalarm #PM10 http://deutschland.maps.luftdaten.info/#13/50.9294/11.5825"
+            "text": {
+                "universal" : "Wir sind nun zu, aber wenn du eine Projektidee f\u00fcr zu hause brauchst, warum nicht einen weiteren @airrohr Feinstaubsensor f\u00fcr #Jena aufstellen? @luftdaten #Feinstaubalarm #PM10 http://deutschland.maps.luftdaten.info/#13/50.9294/11.5825",
+                "mastodon" : "Wir sind nun zu, aber wenn du eine Projektidee f\u00fcr zu hause brauchst, warum nicht einen weiteren @airrohr Feinstaubsensor f\u00fcr #Jena aufstellen? @luftdaten@mastodon.social #Feinstaubalarm #PM10 http://deutschland.maps.luftdaten.info/#13/50.9294/11.5825"
+            }
         },
         {
-            "text": "Krautspace ist nun zu. Nein? Doch! Oh!"
+            "text": {"universal" : "Krautspace ist nun zu. Nein? Doch! Oh!"}
         },
         {
-            "text": "-.- .-. .- ..- - ... .--. .- -.-. . / .. ... / -.-. .-.. --- ... . -.. .-.-.-"
+            "text": {"universal" : "-.- .-. .- ..- - ... .--. .- -.-. . / .. ... / -.-. .-.. --- ... . -.. .-.-.-"}
         },
         {
-            "text": "Krautspace ist zu und du hast noch (k)eine Idee f\u00fcr ein Projekt? Frag auf unserer Emailliste nach. Die ist immer auf und Leute helfen dir dort gerne. https://lstsrv.org/mailman/listinfo/hackspace-jena"
+            "text": {"universal" : "Krautspace ist zu und du hast noch (k)eine Idee f\u00fcr ein Projekt? Frag auf unserer Emailliste nach. Die ist immer auf und Leute helfen dir dort gerne. https://lstsrv.org/mailman/listinfo/hackspace-jena"}
         },
         {
-            "text": "Sie verlassen jetzt den Krautspace, n\u00e4chster Ort auf Ihrer Reise ist Bad Gateway - Internetkurort."
+            "text": {"universal" : "Sie verlassen jetzt den Krautspace, n\u00e4chster Ort auf Ihrer Reise ist Bad Gateway - Internetkurort."}
         },
         {
-            "text": "Ich bin jetzt zu. Solange keiner da ist schaue ich den Reisenden in der Gegend zu und versuche sie sirenenhaft hierhin zu locken... Kraft meiner Gedanken... und Funk! https://aprs.fi/#!addr=jena @APRSFI"
+            "text": {"universal" : "Ich bin jetzt zu. Solange keiner da ist schaue ich den Reisenden in der Gegend zu und versuche sie sirenenhaft hierhin zu locken... Kraft meiner Gedanken... und Funk! https://aprs.fi/#!addr=jena @APRSFI"}
         },
         {
-            "text": "Wir sind dann mal weg!"
+            "text": {"universal" : "Wir sind dann mal weg!"}
         },
         {
-            "text": "Waren Sie schon mal in #Jena? Dort ist es schön. Wir sind nun auch dort zu finden."
+            "text": {"universal" : "Waren Sie schon mal in #Jena? Dort ist es schön. Wir sind nun auch dort zu finden."}
         },
         {
-            "text": "Keine Neuigkeiten aus dem Krautspace? Was gibt's denn sonst so in Jena? Schaut doch mal auf @Jenaertweets vorbei!"
+            "text": {
+                "universal" : "Keine Neuigkeiten aus dem Krautspace? Was gibt's denn sonst so in Jena? Schaut doch mal auf @Jenaertweets vorbei!",
+                "mastodon" : "Keine Neuigkeiten aus dem Krautspace? Was gibt's denn sonst so in Jena? Schaut doch mal auf @Jenaertoots@mastodon.social vorbei!"
+            }
         },
         {
-            "text": "Der Maschinenkraut ist GESCHLOSSEN... No. 1337"
+            "text": {"universal" : "Der Maschinenkraut ist GESCHLOSSEN... No. 1337"}
         },
         {
-            "text": "Nach der Hackarbeit ist vor der @AfterWorkPartyJ"
+            "text": {"universal" : "Nach der Hackarbeit ist vor der @AfterWorkPartyJ"}
         },
         {
-            "text": "Es ist zwar jetzt zu, aber vielleicht sind wir nur kurz zum Einkaufen in der @goethegalerie. Schaut bitte nochmal auf den Status in 30 Minuten."
+            "text": {"universal" : "Es ist zwar jetzt zu, aber vielleicht sind wir nur kurz zum Einkaufen in der @goethegalerie. Schaut bitte nochmal auf den Status in 30 Minuten."}
         },
         {
-            "text": "We are outside smelling the roses... and using @Flora_Incognita on our smartphones to identify wild flowers!"
+            "text": {"universal" : "We are outside smelling the roses... and using @Flora_Incognita on our smartphones to identify wild flowers!"}
         },
         {
-            "text": "E-DOOR says: Space is CLOSED!"
+            "text": {"universal" : "E-DOOR says: Space is CLOSED!"}
         },
         {
-            "text": "Der @HackspaceJena beendet die #Spacetime!"
+            "text": {
+                "universal" : "Der @HackspaceJena beendet die #Spacetime!",
+                "mastodon" : "Der @krautspace@chaos.social beendet die #Spacetime!"
+            }
         },
         {
-            "text": "You can't Hack this (oh-oh oh oh-oh-oh) \n Break it down (Oh-oh-oh-oh-oh-oh-oh-oh-oh oh-oh) \n (Oh-oh-oh-oh-oh-oh-oh-oh-oh oh-oh) Stop Hacker time. https://www.youtube.com/watch?v=otCpCn0l4Wo"
+            "text": {"universal" : "You can't Hack this (oh-oh oh oh-oh-oh) \n Break it down (Oh-oh-oh-oh-oh-oh-oh-oh-oh oh-oh) \n (Oh-oh-oh-oh-oh-oh-oh-oh-oh oh-oh) Stop Hacker time. https://www.youtube.com/watch?v=otCpCn0l4Wo"}
         },
         {
-            "text": "Spaaaaaaaaaaaaaaaaaaaaaaaaace is closed :("
+            "text": {"universal" : "Spaaaaaaaaaaaaaaaaaaaaaaaaace is closed :("}
         },
         {
-            "text": "Alle Mitglieder sind ausgeflogen. Wahrscheinlich fliegen auch einige Mitglieder ihre @Mastodrone #Drohnen draußen bei schoenem Wetter."
+            "text": {"universal" : "Alle Mitglieder sind ausgeflogen. Wahrscheinlich fliegen auch einige Mitglieder ihre @Mastodrone #Drohnen draußen bei schoenem Wetter."}
         },
         {
-            "text": "Ihr wisst schon... abschalten! https://www.youtube.com/watch?v=1RpuTQS4hWw "
+            "text": {"universal" : "Ihr wisst schon... abschalten! https://www.youtube.com/watch?v=1RpuTQS4hWw "}
         },
         {
-            "text": "Hackerspace #Krautspace is closed. But there is more open-source in #Jena. Hack #space for the #NASA #SpaceApps challenge with @SpaceAppsJena!"
+            "text": {"universal" : "Hackerspace #Krautspace is closed. But there is more open-source in #Jena. Hack #space for the #NASA #SpaceApps challenge with @SpaceAppsJena!"}
         },
         {
-            "text": "Rien ne va plus!"
+            "text": {"universal" : "Rien ne va plus!"}
         },
         {
-            "text": "Alle Leute sind draussen, denn draussen in #Jena ist es spektakul\u00e4r! Auch dank dem @spektartulum!"
+            "text": {"universal" : "Alle Leute sind draussen, denn draussen in #Jena ist es spektakul\u00e4r! Auch dank dem @spektartulum!"}
         },
         {
-            "text": "We ended our expriments of today. We have done cool experiments in #Krautspace, but not as cool as the @jena_experiment!"
+            "text": {"universal" : "We ended our exepriments of today. We have done cool experiments in #Krautspace, but not as cool as the @jena_experiment!"}
         },
         {
-            "text": "De hackerspace @HackspaceJena is gesloten."
+            "text": {
+                "universal" : "De hackerspace @HackspaceJena is gesloten.",
+                "mastodon" : "De hackerspace @krautspace@chaos.social is gesloten."
+            }
         },
         {
-            "text": "Space is closed. You can see what will happen next on @HackspaceJena @Twitter or on https://chaos.social/@krautspace #Mastodon."
+            "text": {"universal" : "Space is closed. You can see what will happen next on @HackspaceJena @Twitter or on https://chaos.social/@krautspace #Mastodon."}
         },
         {
-            "text": "This closing tweet has been presented by #tweepy! Thank you community https://discord.gg/bJvqnhg, get the code @github https://github.com/tweepy/tweepy"
+            "text": {"universal" : "This closing tweet has been presented by #tweepy! Thank you community https://discord.gg/bJvqnhg, get the code @github https://github.com/tweepy/tweepy"}
         }
     ],
     "opening_text": [
         {
-            "text": "Krautspace ist besetzt."
+            "text": {"universal" : "Krautspace ist besetzt."}
         },
         {
-            "text": "#krautspace is open."
+            "text": {"universal" : "#krautspace is open."}
         },
         {
-            "text": "At least one person is in #krautspace and invites you to come and join hacking!"
+            "text": {"universal" : "At least one person is in #krautspace and invites you to come and join hacking!"}
         },
         {
-            "text": "One Ping Only! .... Ping, #krautspace is open."
+            "text": {"universal" : "One Ping Only! .... Ping, #krautspace is open."}
         },
         {
-            "text": "Booting up #krautspace.... space is open!"
+            "text": {"universal" : "Booting up #krautspace.... space is open!"}
         },
         {
-            "text": "The space is open, let's hack together."
+            "text": {"universal" : "The space is open, let's hack together."}
         },
         {
-            "text": "Did you miss me? Don't cry, I am open again!"
+            "text": {"universal" : "Did you miss me? Don't cry, I am open again!"}
         },
         {
-            "text": "Today is a good day to DIY! Krautspace is open."
+            "text": {"universal" : "Today is a good day to DIY! Krautspace is open."}
         },
         {
-            "text": "Want to learn how to hack hardware? Come to Krautspace now and start by taking things apart."
+            "text": {"universal" : "Want to learn how to hack hardware? Come to Krautspace now and start by taking things apart."}
         },
         {
-            "text": "Come to Krautspace, we're open."
+            "text": {"universal" : "Come to Krautspace, we're open."}
         },
         {
-            "text": "Der Space ist jetzt offen und du kannst weitere \"Wir sind offen\" Spr\u00fcche zu unserem Twitter Bot auf @Github hinzuf\u00fcgen auf https://github.com/HackspaceJena/space_status "
+            "text": {"universal" : "Der Space ist jetzt offen und du kannst weitere \"Wir sind offen\" Spr\u00fcche zu unserem Twitter Bot auf @Github hinzuf\u00fcgen auf https://github.com/HackspaceJena/space_status "}
         },
         {
-            "text": "Hackers gonna hack, now in open Krautspace again."
+            "text": {"universal" : "Hackers gonna hack, now in open Krautspace again."}
         },
         {
-            "text": "Come on over and have some fun! The space is open."
+            "text": {"universal" : "Come on over and have some fun! The space is open."}
         },
         {
-            "text": "The more you know! Krautspace is open. http://i3.kym-cdn.com/photos/images/newsfeed/000/620/434/f9e.gif"
+            "text": {"universal" : "The more you know! Krautspace is open. http://i3.kym-cdn.com/photos/images/newsfeed/000/620/434/f9e.gif"}
         },
         {
-            "text": "Come to the Krautspace now, we have Mate!"
+            "text": {"universal" : "Come to the Krautspace now, we have Mate!"}
         },
         {
-            "text": "A Wild Hacker Appears! Opening Krautspace now..."
+            "text": {"universal" : "A Wild Hacker Appears! Opening Krautspace now..."}
         },
         {
-            "text": "You can turn your soldering irons up to eleven again, Krautspace is open."
+            "text": {"universal" : "You can turn your soldering irons up to eleven again, Krautspace is open."}
         },
         {
-            "text": "Blinken um dich rum genug bunte Lichter? Nein? Der Krautspace ist jetzt offen, komm vorbei, mach mehr blink!"
+            "text": {"universal" : "Blinken um dich rum genug bunte Lichter? Nein? Der Krautspace ist jetzt offen, komm vorbei, mach mehr blink!"}
         },
         {
-            "text": "The krautspace is open, come on over for a cold #ClubMate. https://matemonkey.com/map/dealer/krautspace?@=17,50.928943,11.586419 @matemonkeycom"
+            "text": {"universal" : "The krautspace is open, come on over for a cold #ClubMate. https://matemonkey.com/map/dealer/krautspace?@=17,50.928943,11.586419 @matemonkeycom"}
         },
         {
-            "text": "Beep beep, I'm open for hacking visitors!"
+            "text": {"universal" : "Beep beep, I'm open for hacking visitors!"}
         },
         {
-            "text": "Welcome to Krautspace, your #Jena hackerspace!"
+            "text": {"universal" : "Welcome to Krautspace, your #Jena hackerspace!"}
         },
         {
-            "text": "Hello member, I missed you."
+            "text": {"universal" : "Hello member, I missed you."}
         },
         {
-            "text": "Heute im #Krautspace >> https://kraut.space"
+            "text": {"universal" : "Heute im #Krautspace >> https://kraut.space"}
         },
         {
-            "text": "-.- .-. .- ..- - ... .--. .- -.-. . / .. ... / --- .--. . -. .-.-.-"
+            "text": {"universal" : "-.- .-. .- ..- - ... .--. .- -.-. . / .. ... / --- .--. . -. .-.-.-"}
         },
         {
-            "text": "Der Maschinenkraut ist OFFEN... No. 4223"
+            "text": {"universal" : "Der Maschinenkraut ist OFFEN... No. 4223"}
         },
         {
-            "text": "E-DOOR says: Space is OPEN!"
+            "text": {"universal" : "E-DOOR says: Space is OPEN!"}
         },
         {
-            "text": "#Spacetime im @HackspaceJena!"
+            "text": {
+                "universal" : "#Spacetime im @HackspaceJena!",
+                "mastodon" : "#Spacetime im @Krautspace@chaos.social!"
+            }
         },
         {
-            "text": "#Krautspace is offen. Wir machen hier vieles, auch Workshops. Vielleicht auch irgendwann das HACKERMAN'S HACKING TUTORIALS - How To Hack Time https://www.youtube.com/watch?v=KEkrWRHCDQU"
+            "text": {"universal" : "#Krautspace is offen. Wir machen hier vieles, auch Workshops. Vielleicht auch irgendwann das HACKERMAN'S HACKING TUTORIALS - How To Hack Time https://www.youtube.com/watch?v=KEkrWRHCDQU"}
         },
         {
-            "text": "Spaaaaaaaaaaaaaaaaaaaaaaaaace is open :)"
+            "text": {"universal" : "Spaaaaaaaaaaaaaaaaaaaaaaaaace is open :)"}
         },
         {
-            "text": "NOTENOUGHBLINKENLIGHTS: Please visit the (now open) krautspace to make more blinkenlights."
+            "text": {"universal" : "NOTENOUGHBLINKENLIGHTS: Please visit the (now open) krautspace to make more blinkenlights."}
         },
         {
-            "text": "Der Krautspace ist auf. Vielleicht wird nun an unseren Projekten wie @Mastodrone, @Jenaertweets, @RasPowermeter, @repaircafe_jena, @OSM_to & an mir gewerkelt. Findet es heraus. Kommt vorbei!"
+            "text": {
+                "universal" : "Der Krautspace ist auf. Vielleicht wird nun an unseren Projekten wie @Mastodrone, @Jenaertweets, @RasPowermeter, @repaircafe_jena, @OSM_to & an mir gewerkelt. Findet es heraus. Kommt vorbei!",
+                "mastodon" : "Der Krautspace ist auf. Vielleicht wird nun an unseren Projekten wie @Mastodrone, @Jenaertoots@mastodon.social, @RasPowermeter, @repaircafe_jena@mastodon.social, @OSM_to & an mir gewerkelt. Findet es heraus. Kommt vorbei!"
+            }
         },
         {
-            "text": "This hacking time notice has been presented by an @Raspberry_Pi and an @Arduino!"
+            "text": {"universal" : "This hacking time notice has been presented by an @Raspberry_Pi and an @Arduino!"}
         },
         {
-            "text": "Our heroes are leaving the hackerspace catacombs. Ah, Venice! https://youtu.be/eTTgusoFHhI"
+            "text": {"universal" : "Our heroes are leaving the hackerspace catacombs. Ah, Venice! https://youtu.be/eTTgusoFHhI"}
         },
         {
-            "text": "Open Sesame!"
+            "text": {"universal" : "Open Sesame!"}
         },
         {
-            "text": "Sesam \u00f6ffne dich!"
+            "text": {"universal" : "Sesam \u00f6ffne dich!"}
         },
         {
-            "text": "Mr. Gorbachev, open this gate! --US-President Ronald Reagan in Berlin in 1987-06-12"
+            "text": {"universal" : "Mr. Gorbachev, open this gate! --US-President Ronald Reagan in Berlin in 1987-06-12"}
         },
         {
-            "text": "Space is open. Now go to @HackspaceJena @Twitter or on https://chaos.social/@krautspace #Mastodon and see the project-magic gonna happen! If it happened, we will tweet and toot about it."
+            "text": {"universal" : "Space is open. Now go to @HackspaceJena @Twitter or on https://chaos.social/@krautspace #Mastodon and see the project-magic gonna happen! If it happened, we will tweet and toot about it."}
         },
         {
-            "text": "This opening tweet is presented by #tweepy! Thank you community https://discord.gg/bJvqnhg, get the code @github https://github.com/tweepy/tweepy"
+            "text": {"universal" : "This opening tweet is presented by #tweepy! Thank you community https://discord.gg/bJvqnhg, get the code @github https://github.com/tweepy/tweepy"}
         }
     ],
     "uncertain_text": [
         {
-            "text": "people in #krautspace want their privacy."
+            "text": {"universal" : "people in #krautspace want their privacy."}
         }
     ]
 }

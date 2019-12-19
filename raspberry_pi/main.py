@@ -1,6 +1,4 @@
 import RPi.GPIO as GPIO
-import time
-
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -12,7 +10,9 @@ import time
 import urllib.request, json
 import datetime
 import tweepy
+from mastodon import Mastodon
 import random
+import time
 
 
 def textselect(min, max):
@@ -35,15 +35,21 @@ with open(file_configure_path, 'r') as f:
 
 path = data_config["path"]
 
-CONSUMER_KEY = data_config["twitter_api"]["consumer_key"]
-CONSUMER_SECRET = data_config["twitter_api"]["consumer_secret"]
-ACCESS_KEY = data_config["twitter_api"]["token"]
-ACCESS_SECRET = data_config["twitter_api"]["token_secret"]
-print(CONSUMER_KEY)
 
-auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
-api = tweepy.API(auth)
+TWITTER_CONSUMER_KEY = data_config["twitter_api"]["consumer_key"]
+TWITTER_CONSUMER_SECRET = data_config["twitter_api"]["consumer_secret"]
+TWITTER_ACCESS_KEY = data_config["twitter_api"]["token"]
+TWITTER_ACCESS_SECRET = data_config["twitter_api"]["token_secret"]
+
+twitter_auth = tweepy.OAuthHandler(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET)
+twitter_auth.set_access_token(TWITTER_ACCESS_KEY, TWITTER_ACCESS_SECRET)
+twitter_api = tweepy.API(twitter_auth)
+
+
+MASTODON_ACCESS_TOKEN = data_config["mastodon_api"]["access_token"]
+MASTODON_API_BASE_URL = data_config["mastodon_api"]["api_base_url"]
+
+
 
 
 state = 1
@@ -51,6 +57,7 @@ state_b4 = 1
 
 
 while True:
+
     if GPIO.input(12) == GPIO.HIGH:
         #print("button was pushed:")
         
@@ -60,12 +67,10 @@ while True:
     if GPIO.input(12) == GPIO.LOW:
         #print("button was not pushed:")
         state = 0
-    
-    
+
     time_now = time.time()
     
     file_status_path = dir_path + os.sep + "status.json"
-    #print(file_status_path)
         
     
     if state == 1 and state_b4 == 0:
@@ -77,22 +82,49 @@ while True:
         number = len(data_status["opening_text"])
         number = textselect(0, number - 1)
 
-        text = data_status["opening_text"][number]["text"] + " [OPEN:" + datetime.datetime.fromtimestamp(
-        int( time_now )).strftime('%Y-%m-%d %H:%M:%S') + "]"
-                    
-        print("Text:", text)
-        
-        #print("opened")
-        #text = "#Krautspace was opened. testmode (if you think I am wrong, report to me this bug/observation!) " + datetime.datetime.fromtimestamp(
-        #        int( time_now )).strftime('%Y-%m-%d %H:%M:%S') + ""
-                    
-        #print("Text:", text)
+
+        time_opening = datetime.datetime.fromtimestamp(int(time_now)).strftime('%Y-%m-%d %H:%M:%S')
+        texts = data_status["opening_text"][number]["text"]
+
+        if texts.get("twitter") != None:
+            text = texts["twitter"] + " [OPEN:" + time_opening + "]"
+
+        else:
+            text = texts["universal"] + " [OPEN:" + time_opening + "]"
+
+
+        print("twitter text:", text)
+
         try:
-            api.update_status(text)
+            twitter_api.update_status(text)
             # same text as before cannot be posted!
         except:
-            print(time_now, "did not tweet closing status")
-    
+            print(time_now, "did not tweet opening status")
+
+
+
+        if MASTODON_ACCESS_TOKEN != "fill in your data!":
+
+            if texts.get("mastodon") != None:
+                text = texts["mastodon"] + " [OPEN:" + time_opening + "]"
+
+            else:
+                text = texts["universal"] + " [OPEN:" + time_opening + "]"
+
+
+            print("mastodon text:", text)
+
+            try:
+                mastodon = Mastodon(
+                    access_token=MASTODON_ACCESS_TOKEN,
+                    api_base_url=MASTODON_API_BASE_URL
+                )
+                mastodon.toot(text)
+            except:
+                print(time_now, "did not toot closing status", time_closing)
+
+
+
     if state == 0 and state_b4 == 1:
         #print("closed")
         
@@ -103,22 +135,47 @@ while True:
         number = len(data_status["closing_text"])
         number = textselect(0, number - 1)
 
-        text = data_status["closing_text"][number]["text"] + " [CLOSED:" + datetime.datetime.fromtimestamp(
-        int( time_now )).strftime('%Y-%m-%d %H:%M:%S') + "]"
+
+        time_closing = datetime.datetime.fromtimestamp(int( time_now )).strftime('%Y-%m-%d %H:%M:%S')
+        texts = data_status["closing_text"][number]["text"]
+
+        if texts.get("twitter") != None:
+            text = texts["twitter"] + " [CLOSED:" + time_closing + "]"
+
+        else:
+            text = texts["universal"] + " [CLOSED:" + time_closing + "]"
+
                     
-        print("Text:", text)
-        
-        
-        #text = "#Krautspace was closed. testmode (if you think I am wrong, report to me this bug/observation!) " + datetime.datetime.fromtimestamp(
-        #                int( time_now )).strftime('%Y-%m-%d %H:%M:%S') + ""
-                    
-        #print("Text:", text)
+        print("Twitter Text:", text)
+
         try:
-            api.update_status(text)
+            twitter_api.update_status(text)
             # same text as before cannot be posted!
         except:
             print(time_now, "did not tweet closing status")
-    
+
+
+
+        if MASTODON_ACCESS_TOKEN != "fill in your data!":
+            if texts.get("mastodon") != None:
+                text = texts["mastodon"] + " [CLOSED:" + time_closing + "]"
+
+            else:
+                text = texts["universal"] + " [CLOSED:" + time_closing + "]"
+
+
+            print("mastodon text:", text)
+
+            try:
+                mastodon = Mastodon(
+                    access_token=MASTODON_ACCESS_TOKEN,
+                    api_base_url=MASTODON_API_BASE_URL
+                )
+                mastodon.toot(text)
+            except:
+                print(time_now, "did not toot closing status", time_closing)
+
+
     state_b4 = state
     
     time.sleep(10)
