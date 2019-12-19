@@ -150,6 +150,9 @@
         },
         {
             "text": "De hackerspace @HackspaceJena is gesloten."
+        },
+        {
+            "text": "Space is closed. You can see what will happen next on @HackspaceJena @Twitter or on https://chaos.social/@krautspace #Mastodon."
         }
     ],
     "opening_text": [
@@ -260,6 +263,9 @@
         },
         {
             "text": "Mr. Gorbachev, open this gate! --US-President Ronald Reagan in Berlin in 1987-06-12"
+        },
+        {
+            "text": "Space is open. Now go to @HackspaceJena @Twitter or on https://chaos.social/@krautspace #Mastodon and see the project-magic gonna happen! If it happened, we will tweet and toot about it."
         }
     ],
     "uncertain_text": [
