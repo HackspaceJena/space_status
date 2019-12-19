@@ -153,6 +153,9 @@
         },
         {
             "text": "Space is closed. You can see what will happen next on @HackspaceJena @Twitter or on https://chaos.social/@krautspace #Mastodon."
+        },
+        {
+            "text": "This closing tweet has been presented by #tweepy! Thank you community https://discord.gg/bJvqnhg, get the code @github https://github.com/tweepy/tweepy"
         }
     ],
     "opening_text": [
@@ -266,6 +269,9 @@
         },
         {
             "text": "Space is open. Now go to @HackspaceJena @Twitter or on https://chaos.social/@krautspace #Mastodon and see the project-magic gonna happen! If it happened, we will tweet and toot about it."
+        },
+        {
+            "text": "This opening tweet is presented by #tweepy! Thank you community https://discord.gg/bJvqnhg, get the code @github https://github.com/tweepy/tweepy"
         }
     ],
     "uncertain_text": [
