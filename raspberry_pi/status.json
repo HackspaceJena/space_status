@@ -178,6 +178,12 @@
         },
         {
             "text": {"universal" : "This closing tweet has been presented by #tweepy! Thank you community https://discord.gg/bJvqnhg, get the code @github https://github.com/tweepy/tweepy"}
+        },
+        {
+            "text": {"universal" : "Der #Krautspace ist zu!"}
+        },
+        {
+            "text": {"universal" : "#Krautspace est fermée. "}
         }
     ],
     "opening_text": [
