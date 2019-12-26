@@ -305,7 +305,10 @@
             "text": {"universal" : "Space is open. Now go to @HackspaceJena @Twitter or on https://chaos.social/@krautspace #Mastodon and see the project-magic gonna happen! If it happened, we will tweet and toot about it."}
         },
         {
-            "text": {"universal" : "This opening tweet is presented by #tweepy! Thank you community https://discord.gg/bJvqnhg, get the code @github https://github.com/tweepy/tweepy"}
+            "text": {
+                "universal" : "This opening tweet is presented by #tweepy + #mastodon.py! Thank you communities (https://discord.gg/bJvqnhg), get the code @github https://github.com/tweepy/tweepy and https://github.com/halcy/Mastodon.py",
+                "mastodon" : "This opening tweet is presented by mastodon.py! Thank you community, get the code @github https://github.com/halcy/Mastodon.py"
+            }
         }
     ],
     "uncertain_text": [
