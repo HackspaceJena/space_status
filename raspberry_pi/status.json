@@ -177,13 +177,24 @@
             "text": {"universal" : "Space is closed. You can see what will happen next on @HackspaceJena @Twitter or on https://chaos.social/@krautspace #Mastodon."}
         },
         {
-            "text": {"universal" : "This closing tweet has been presented by #tweepy! Thank you community https://discord.gg/bJvqnhg, get the code @github https://github.com/tweepy/tweepy"}
+            "text": {
+			    "universal" : "This closing tweet has been presented by #tweepy + #mastodon.py! Thank you communities (https://discord.gg/bJvqnhg), get the code @github https://github.com/tweepy/tweepy and https://github.com/halcy/Mastodon.py",
+                "mastodon" : "This clsoing toott has been presented by mastodon.py! Thank you community, get the code @github https://github.com/halcy/Mastodon.py"
+            
+				}
         },
         {
             "text": {"universal" : "Der #Krautspace ist zu!"}
         },
         {
             "text": {"universal" : "#Krautspace est fermée. "}
+        },
+		{
+            "text": {
+                "universal" : "Krautspace is closed. You can also find our status service on #mastodon under https://chaos.social/@kraut_status and on on #twitter under https://twitter.com/ksraumstatus",
+				"twitter" : "Krautspace is closed. You can also find our status service on #mastodon under https://chaos.social/@kraut_status",
+                "mastodon" : "Krautspace is closed. You can also find our status service on #twitter under https://twitter.com/ksraumstatus"
+            }
         }
     ],
     "opening_text": [
@@ -287,7 +298,7 @@
             }
         },
         {
-            "text": {"universal" : "This hacking time notice has been presented by an @Raspberry_Pi and an @Arduino!"}
+            "text": {"universal" : "This hacking time notice has been presented by a @Raspberry_Pi and an @Arduino!"}
         },
         {
             "text": {"universal" : "Our heroes are leaving the hackerspace catacombs. Ah, Venice! https://youtu.be/eTTgusoFHhI"}
@@ -308,6 +319,13 @@
             "text": {
                 "universal" : "This opening tweet is presented by #tweepy + #mastodon.py! Thank you communities (https://discord.gg/bJvqnhg), get the code @github https://github.com/tweepy/tweepy and https://github.com/halcy/Mastodon.py",
                 "mastodon" : "This opening tweet is presented by mastodon.py! Thank you community, get the code @github https://github.com/halcy/Mastodon.py"
+            }
+        },
+		{
+            "text": {
+                "universal" : "Krautspace is open. You can also find our status service on #mastodon under https://chaos.social/@kraut_status and on on #twitter under https://twitter.com/ksraumstatus",
+				"twitter" : "Krautspace is open. You can also find our status service on #mastodon under https://chaos.social/@kraut_status",
+                "mastodon" : "Krautspace is open. You can also find our status service on #twitter under https://twitter.com/ksraumstatus"
             }
         }
     ],
