@@ -161,7 +161,7 @@ while True:
         time_closing = datetime.datetime.fromtimestamp(int( time_now )).strftime('%Y-%m-%d %H:%M:%S')
         texts = data_status["closing_text"][number]["text"]
 
-        if MASTODON_ACCESS_TOKEN != "fill in your data!":
+        if TWITTER_ACCESS_KEY != "fill in your data!":
             if texts.get("twitter") != None:
                 text = texts["twitter"] + " [CLOSED:" + time_closing + "]"
 
