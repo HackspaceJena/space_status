@@ -7,7 +7,7 @@ import tweepy
 from mastodon import Mastodon
 import random
 import time
-testmode = True
+testmode = False
 if testmode != True:
     import RPi.GPIO as GPIO
     GPIO.setwarnings(False)
@@ -26,6 +26,25 @@ def textselect(min, max):
         return 0
     else:
         return random.randint(min, max)
+
+
+def send_tweet(twitter_api, text, time_now, status):
+    try:
+        twitter_api.update_status(text)
+        # same text as before cannot be posted!
+    except:
+        print(time_now, "did not tweet", status, "status")
+
+
+def send_toot(MASTODON_ACCESS_TOKEN, MASTODON_API_BASE_URL, text, time_now, status):
+    try:
+        mastodon = Mastodon(
+            access_token=MASTODON_ACCESS_TOKEN,
+            api_base_url=MASTODON_API_BASE_URL
+        )
+        mastodon.toot(text)
+    except:
+        print(time_now, "did not toot", status," status")
 
 
 path = os.path.abspath(__file__)
@@ -108,11 +127,7 @@ while True:
             print("twitter text:", text)
 
             if testmode != True:
-                try:
-                    twitter_api.update_status(text)
-                    # same text as before cannot be posted!
-                except:
-                    print(time_now, "did not tweet opening status")
+                send_tweet(twitter_api, text, time_now, "opening")
 
 
 
@@ -128,14 +143,7 @@ while True:
             print("mastodon text:", text)
 
             if testmode != True:
-                try:
-                    mastodon = Mastodon(
-                        access_token=MASTODON_ACCESS_TOKEN,
-                        api_base_url=MASTODON_API_BASE_URL
-                    )
-                    mastodon.toot(text)
-                except:
-                    print(time_now, "did not toot closing status", time_closing)
+                send_toot(MASTODON_ACCESS_TOKEN, MASTODON_API_BASE_URL, text, time_now, "opening")
 
 
 
@@ -164,11 +172,7 @@ while True:
             print("twitter text:", text)
 
             if testmode != True:
-                try:
-                    twitter_api.update_status(text)
-                    # same text as before cannot be posted!
-                except:
-                    print(time_now, "did not tweet closing status")
+                send_tweet(twitter_api, text, time_now, "closing")
 
 
 
@@ -183,14 +187,7 @@ while True:
             print("mastodon text:", text)
 
             if testmode != True:
-                try:
-                    mastodon = Mastodon(
-                        access_token=MASTODON_ACCESS_TOKEN,
-                        api_base_url=MASTODON_API_BASE_URL
-                    )
-                    mastodon.toot(text)
-                except:
-                    print(time_now, "did not toot closing status", time_closing)
+                send_toot(MASTODON_ACCESS_TOKEN, MASTODON_API_BASE_URL, text, time_now, "closing")
 
 
     state_b4 = state
