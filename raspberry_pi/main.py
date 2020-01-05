@@ -1,9 +1,3 @@
-import RPi.GPIO as GPIO
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-
-
 import json
 import os
 import time
@@ -13,6 +7,16 @@ import tweepy
 from mastodon import Mastodon
 import random
 import time
+testmode = True
+if testmode != True:
+    import RPi.GPIO as GPIO
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+    print("Mode: operational")
+else:
+    print("Mode: test")
 
 
 def textselect(min, max):
@@ -58,20 +62,27 @@ state_b4 = 1
 
 while True:
 
-    if GPIO.input(12) == GPIO.HIGH:
-        #print("button was pushed:")
+    if testmode != True:
+        if GPIO.input(12) == GPIO.HIGH:
+            #print("button was pushed:")
         
-        state = 1
+            state = 1
         
     
-    if GPIO.input(12) == GPIO.LOW:
-        #print("button was not pushed:")
-        state = 0
+        if GPIO.input(12) == GPIO.LOW:
+            #print("button was not pushed:")
+            state = 0
+    else:
+        # just toggles the states for test mode!
+        if state == 0:
+            state = 1
+        else:
+            state = 0
+
 
     time_now = time.time()
     
     file_status_path = dir_path + os.sep + "status.json"
-        
     
     if state == 1 and state_b4 == 0:
         
@@ -86,20 +97,22 @@ while True:
         time_opening = datetime.datetime.fromtimestamp(int(time_now)).strftime('%Y-%m-%d %H:%M:%S')
         texts = data_status["opening_text"][number]["text"]
 
-        if texts.get("twitter") != None:
-            text = texts["twitter"] + " [OPEN:" + time_opening + "]"
+        if TWITTER_ACCESS_KEY != "fill in your data!":
+            if texts.get("twitter") != None:
+                text = texts["twitter"] + " [OPEN:" + time_opening + "]"
 
-        else:
-            text = texts["universal"] + " [OPEN:" + time_opening + "]"
+            else:
+                text = texts["universal"] + " [OPEN:" + time_opening + "]"
 
 
-        print("twitter text:", text)
+            print("twitter text:", text)
 
-        try:
-            twitter_api.update_status(text)
-            # same text as before cannot be posted!
-        except:
-            print(time_now, "did not tweet opening status")
+            if testmode != True:
+                try:
+                    twitter_api.update_status(text)
+                    # same text as before cannot be posted!
+                except:
+                    print(time_now, "did not tweet opening status")
 
 
 
@@ -114,14 +127,15 @@ while True:
 
             print("mastodon text:", text)
 
-            try:
-                mastodon = Mastodon(
-                    access_token=MASTODON_ACCESS_TOKEN,
-                    api_base_url=MASTODON_API_BASE_URL
-                )
-                mastodon.toot(text)
-            except:
-                print(time_now, "did not toot closing status", time_closing)
+            if testmode != True:
+                try:
+                    mastodon = Mastodon(
+                        access_token=MASTODON_ACCESS_TOKEN,
+                        api_base_url=MASTODON_API_BASE_URL
+                    )
+                    mastodon.toot(text)
+                except:
+                    print(time_now, "did not toot closing status", time_closing)
 
 
 
@@ -139,20 +153,22 @@ while True:
         time_closing = datetime.datetime.fromtimestamp(int( time_now )).strftime('%Y-%m-%d %H:%M:%S')
         texts = data_status["closing_text"][number]["text"]
 
-        if texts.get("twitter") != None:
-            text = texts["twitter"] + " [CLOSED:" + time_closing + "]"
+        if MASTODON_ACCESS_TOKEN != "fill in your data!":
+            if texts.get("twitter") != None:
+                text = texts["twitter"] + " [CLOSED:" + time_closing + "]"
 
-        else:
-            text = texts["universal"] + " [CLOSED:" + time_closing + "]"
+            else:
+                text = texts["universal"] + " [CLOSED:" + time_closing + "]"
 
                     
-        print("Twitter Text:", text)
+            print("twitter text:", text)
 
-        try:
-            twitter_api.update_status(text)
-            # same text as before cannot be posted!
-        except:
-            print(time_now, "did not tweet closing status")
+            if testmode != True:
+                try:
+                    twitter_api.update_status(text)
+                    # same text as before cannot be posted!
+                except:
+                    print(time_now, "did not tweet closing status")
 
 
 
@@ -166,14 +182,15 @@ while True:
 
             print("mastodon text:", text)
 
-            try:
-                mastodon = Mastodon(
-                    access_token=MASTODON_ACCESS_TOKEN,
-                    api_base_url=MASTODON_API_BASE_URL
-                )
-                mastodon.toot(text)
-            except:
-                print(time_now, "did not toot closing status", time_closing)
+            if testmode != True:
+                try:
+                    mastodon = Mastodon(
+                        access_token=MASTODON_ACCESS_TOKEN,
+                        api_base_url=MASTODON_API_BASE_URL
+                    )
+                    mastodon.toot(text)
+                except:
+                    print(time_now, "did not toot closing status", time_closing)
 
 
     state_b4 = state
