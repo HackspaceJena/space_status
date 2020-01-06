@@ -1,6 +1,7 @@
 {
     "name": "Krautspace space status",
 	"path": "",
+	"status_url" : "https://raw.githubusercontent.com/HackspaceJena/space_status/master/raspberry_pi/status.json",
     "status_api": {
         "url": "https://status.kraut.space/api",
         "standard": "space.api",

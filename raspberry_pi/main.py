@@ -5,7 +5,7 @@ import datetime
 import tweepy
 from mastodon import Mastodon
 import random
-import time
+import urllib.request
 testmode = False
 if testmode != True:
     import RPi.GPIO as GPIO
@@ -46,6 +46,12 @@ def send_toot(MASTODON_ACCESS_TOKEN, MASTODON_API_BASE_URL, text, time_now, stat
         print(time_now, "did not toot", status," status")
 
 
+def download_json(json_url):
+    with urllib.request.urlopen(json_url) as url:
+        data = json.loads(url.read().decode())
+
+    return data
+
 path = os.path.abspath(__file__)
 dir_path = os.path.dirname(path)
 print("dir path is", dir_path)
@@ -56,6 +62,7 @@ with open(file_configure_path, 'r') as f:
     data_config = json.load(f)
 
 path = data_config["path"]
+STATUS_URL = data_config["status_url"]
 
 
 TWITTER_CONSUMER_KEY = data_config["twitter_api"]["consumer_key"]
@@ -102,11 +109,19 @@ while True:
 
 
     if state != state_b4:
-        file_status_path = dir_path + os.sep + "status.json"
 
-        if os.path.exists(file_status_path) == True:
-            with open(file_status_path, 'r') as f:
-                data_status = json.load(f)
+        try:
+            data_status = download_json(STATUS_URL)
+            print("status fetched online")
+            
+        except:
+            file_status_path = dir_path + os.sep + "status.json"
+
+            if os.path.exists(file_status_path) == True:
+                with open(file_status_path, 'r') as f:
+                    data_status = json.load(f)
+
+                print("status fetched locally")
     
     if state == 1 and state_b4 == 0:
         time_opening = datetime.datetime.fromtimestamp(int(time_now)).strftime('%Y-%m-%d %H:%M:%S')
