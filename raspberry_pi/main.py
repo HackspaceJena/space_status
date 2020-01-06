@@ -104,6 +104,8 @@ while True:
     file_status_path = dir_path + os.sep + "status.json"
     
     if state == 1 and state_b4 == 0:
+        time_opening = datetime.datetime.fromtimestamp(int(time_now)).strftime('%Y-%m-%d %H:%M:%S')
+        print("open", time_opening)
         
         if os.path.exists(file_status_path) == True:
             with open(file_status_path, 'r') as f:
@@ -113,7 +115,6 @@ while True:
         number = textselect(0, number - 1)
 
 
-        time_opening = datetime.datetime.fromtimestamp(int(time_now)).strftime('%Y-%m-%d %H:%M:%S')
         texts = data_status["opening_text"][number]["text"]
 
         if TWITTER_ACCESS_KEY != "fill in your data!":
@@ -148,7 +149,8 @@ while True:
 
 
     if state == 0 and state_b4 == 1:
-        #print("closed")
+        time_closing = datetime.datetime.fromtimestamp(int(time_now)).strftime('%Y-%m-%d %H:%M:%S')
+        print("closed", time_closing)
         
         if os.path.exists(file_status_path) == True:
             with open(file_status_path, 'r') as f:
@@ -158,7 +160,6 @@ while True:
         number = textselect(0, number - 1)
 
 
-        time_closing = datetime.datetime.fromtimestamp(int( time_now )).strftime('%Y-%m-%d %H:%M:%S')
         texts = data_status["closing_text"][number]["text"]
 
         if TWITTER_ACCESS_KEY != "fill in your data!":
