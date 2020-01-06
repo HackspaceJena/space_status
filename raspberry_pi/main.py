@@ -1,7 +1,6 @@
 import json
 import os
 import time
-import urllib.request, json
 import datetime
 import tweepy
 from mastodon import Mastodon
@@ -74,7 +73,7 @@ MASTODON_API_BASE_URL = data_config["mastodon_api"]["api_base_url"]
 
 
 
-
+# storing the current and the previous states of the door
 state = 1
 state_b4 = 1
 
@@ -100,16 +99,19 @@ while True:
 
 
     time_now = time.time()
-    
-    file_status_path = dir_path + os.sep + "status.json"
+
+
+    if state != state_b4:
+        file_status_path = dir_path + os.sep + "status.json"
+
+        if os.path.exists(file_status_path) == True:
+            with open(file_status_path, 'r') as f:
+                data_status = json.load(f)
     
     if state == 1 and state_b4 == 0:
         time_opening = datetime.datetime.fromtimestamp(int(time_now)).strftime('%Y-%m-%d %H:%M:%S')
         print("open", time_opening)
-        
-        if os.path.exists(file_status_path) == True:
-            with open(file_status_path, 'r') as f:
-                    data_status = json.load(f)
+
         
         number = len(data_status["opening_text"])
         number = textselect(0, number - 1)
@@ -151,10 +153,6 @@ while True:
     if state == 0 and state_b4 == 1:
         time_closing = datetime.datetime.fromtimestamp(int(time_now)).strftime('%Y-%m-%d %H:%M:%S')
         print("closed", time_closing)
-        
-        if os.path.exists(file_status_path) == True:
-            with open(file_status_path, 'r') as f:
-                    data_status = json.load(f)
         
         number = len(data_status["closing_text"])
         number = textselect(0, number - 1)
