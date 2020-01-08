@@ -62,7 +62,9 @@ with open(file_configure_path, 'r') as f:
     data_config = json.load(f)
 
 path = data_config["path"]
-STATUS_URL = data_config["status_url"]
+STATUS_URL = data_config["status"]["url"]
+STATUS_CHECKING_PERIOD = data_config["status"]["checking_period"]
+STATUS_LAST_TIME_CHECKED = data_config["status"]["last_time_checked"]
 
 
 TWITTER_CONSUMER_KEY = data_config["twitter_api"]["consumer_key"]
@@ -90,10 +92,10 @@ while True:
     if testmode != True:
         if GPIO.input(12) == GPIO.HIGH:
             #print("button was pushed:")
-        
+
             state = 1
-        
-    
+
+
         if GPIO.input(12) == GPIO.LOW:
             #print("button was not pushed:")
             state = 0
@@ -110,24 +112,52 @@ while True:
 
     if state != state_b4:
 
-        try:
-            data_status = download_json(STATUS_URL)
-            print("status fetched online")
-            
-        except:
+        file_status_internet_path = dir_path + os.sep + "status_internet.json"
+
+        # it is just nice to not always download the newest status.json.
+        if time_now - data_config["status"]["last_time_checked"] >= STATUS_CHECKING_PERIOD and \
+                        STATUS_URL != "":
+
+            print("status fetched online", time_now - STATUS_LAST_TIME_CHECKED)
+
+            try:
+                data_status = download_json(STATUS_URL)
+
+                # writing JSON object
+                with open(file_status_internet_path, 'w') as f:
+                    json.dump(data_status, f, indent=4)
+
+                data_config["status"]["last_time_checked"] = time_now
+
+                # writing JSON object
+                with open(file_configure_path, 'w') as f:
+                    json.dump(data_config, f, indent=4)
+
+            except:
+                print("download failed", time_now)
+
+
+        # loading JSON object
+        if os.path.exists(file_status_internet_path) == True:
+            print("status internet file exists")
+            with open(file_status_internet_path, 'r') as f:
+                data_status = json.load(f)
+
+        else:
             file_status_path = dir_path + os.sep + "status.json"
 
             if os.path.exists(file_status_path) == True:
                 with open(file_status_path, 'r') as f:
                     data_status = json.load(f)
 
-                print("status fetched locally")
-    
+            print("status fetched locally")
+
+
     if state == 1 and state_b4 == 0:
         time_opening = datetime.datetime.fromtimestamp(int(time_now)).strftime('%Y-%m-%d %H:%M:%S')
         print("open", time_opening)
 
-        
+
         number = len(data_status["opening_text"])
         number = textselect(0, number - 1)
 
@@ -168,7 +198,7 @@ while True:
     if state == 0 and state_b4 == 1:
         time_closing = datetime.datetime.fromtimestamp(int(time_now)).strftime('%Y-%m-%d %H:%M:%S')
         print("closed", time_closing)
-        
+
         number = len(data_status["closing_text"])
         number = textselect(0, number - 1)
 
@@ -182,7 +212,7 @@ while True:
             else:
                 text = texts["universal"] + " [CLOSED:" + time_closing + "]"
 
-                    
+
             print("twitter text:", text)
 
             if testmode != True:
@@ -205,5 +235,5 @@ while True:
 
 
     state_b4 = state
-    
+
     time.sleep(10)

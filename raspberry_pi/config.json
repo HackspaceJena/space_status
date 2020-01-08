@@ -1,8 +1,11 @@
 {
     "name": "Krautspace space status",
 	"path": "",
-	"status_url" : "https://raw.githubusercontent.com/HackspaceJena/space_status/master/raspberry_pi/status.json",
-    "status_api": {
+	"status": {
+        "url": "https://raw.githubusercontent.com/HackspaceJena/space_status/master/raspberry_pi/status.json",
+        "checking_period": 86400.0,
+        "last_time_checked": 0.0
+    },"status_api": {
         "url": "https://status.kraut.space/api",
         "standard": "space.api",
         "checking_period": 300
