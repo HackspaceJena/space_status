@@ -200,6 +200,12 @@
             "text": {
                 "universal" : "There is a lot of space outside in #Jena, go outside and check them out @DLR_Software, @spaceappsjena, @urania_jena, @AstroZwerge, @DGLR_Jena, astro.@UniJena, @JEOS_Jena"
             }
+        },
+		{
+            "text": {
+                "universal" : "Go, but go save your Internet! #saveyourinternet #syijena @syijena",
+		"mastodon" : "Go, but go save your Internet! #saveyourinternet #syijena"
+            }
         }
     ],
     "opening_text": [
@@ -332,6 +338,11 @@
 				"twitter" : "Krautspace is open. You can also find our status service on #mastodon under https://chaos.social/@kraut_status",
                 "mastodon" : "Krautspace is open. You can also find our status service on #twitter under https://twitter.com/ksraumstatus"
             }
+        },
+	{
+            "text": {
+                "universal" : "Come to Krautspace, we have #cookies!"
+	    }
         }
     ],
     "uncertain_text": [
