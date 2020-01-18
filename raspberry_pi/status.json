@@ -195,6 +195,11 @@
 				"twitter" : "Krautspace is closed. You can also find our status service on #mastodon under https://chaos.social/@kraut_status",
                 "mastodon" : "Krautspace is closed. You can also find our status service on #twitter under https://twitter.com/ksraumstatus"
             }
+        },
+		{
+            "text": {
+                "universal" : "There is a lot of space outside in #Jena, go outside and check them out @DLR_Software, @spaceappsjena, @urania_jena, @AstroZwerge, @DGLR_Jena, astro.@UniJena, @JEOS_Jena"
+            }
         }
     ],
     "opening_text": [
