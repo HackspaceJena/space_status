@@ -20,9 +20,11 @@ void setup(){
 
 const int DELAY_TIME = 1000;
 const int THRESHOLD = 20;
+const int CLOSED_DOOR = 1;
+const int OPEN_DOOR = 0;
 
 int space_status = THRESHOLD / 2;
-int space_status_b4 = 0;
+int published_door_state = OPEN_DOOR;
 
 void print_status() {
   Serial.print(" ");
@@ -43,11 +45,9 @@ void update_space_status_b4() {
   // status check if we can switch the status.
   // low pass prevents waggling a bit
   if (space_status >= THRESHOLD-3) {
-    // closed
-    space_status_b4 = 1;
+    space_status_b4 = CLOSED_DOOR;
   } else if (space_status <= 3) {
-    // open
-    space_status_b4 = 0;
+    space_status_b4 = OPEN_DOOR;
   }
 }
 
@@ -61,12 +61,10 @@ void loop(){
   delay(DELAY_TIME);
 
   // ampel / traffic light signals
-  if (space_status_b4 == 1) {
-    // closed
+  if (space_status_b4 == CLOSED_DOOR) {
     digitalWrite(RED_LED_OUTPUT_PIN, HIGH);
     digitalWrite(GREEN_LED_OUTPUT_PIN, LOW);
-  } else if (space_status_b4 == 0) {
-    // open
+  } else if (space_status_b4 == OPEN_DOOR) {
     digitalWrite(RED_LED_OUTPUT_PIN, LOW);
     digitalWrite(GREEN_LED_OUTPUT_PIN, HIGH);
   }
