@@ -8,6 +8,18 @@ const int RED_LED_OUTPUT_PIN = 12;
 const int YELLOW_LED_OUTPUT_PIN = 11;
 const int GREEN_LED_OUTPUT_PIN = 10;
 
+const int DELAY_TIME = 1000;
+
+const int MAX_COUNTER = 20;
+const int LOWER_THRESHOLD = 4;
+const int UPPER_THRESHOLD = MAX_COUNTER - LOWER_THRESHOLD;
+
+const int CLOSED_DOOR = 1;
+const int OPEN_DOOR = 0;
+
+int measured_state_counter = MAX_COUNTER / 2;
+int published_state = OPEN_DOOR;
+
 void setup(){
  Serial.begin(9600);
 
@@ -17,16 +29,6 @@ void setup(){
  pinMode(YELLOW_LED_OUTPUT_PIN, OUTPUT);
  pinMode(GREEN_LED_OUTPUT_PIN, OUTPUT);
 }
-
-const int DELAY_TIME = 1000;
-const int MAX_COUNTER = 20;
-const int LOWER_THRESHOLD = 4;
-const int UPPER_THRESHOLD = MAX_COUNTER - LOWER_THRESHOLD;
-const int CLOSED_DOOR = 1;
-const int OPEN_DOOR = 0;
-
-int measured_state_counter = MAX_COUNTER / 2;
-int published_state = OPEN_DOOR;
 
 void print_status() {
   Serial.print(" ");
