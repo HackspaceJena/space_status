@@ -19,11 +19,11 @@ void setup(){
 }
 
 const int DELAY_TIME = 1000;
-const int THRESHOLD = 20;
+const int MAX_COUNTER = 20;
 const int CLOSED_DOOR = 1;
 const int OPEN_DOOR = 0;
 
-int measured_state_counter = THRESHOLD / 2;
+int measured_state_counter = MAX_COUNTER / 2;
 int published_state = OPEN_DOOR;
 
 void print_status() {
@@ -44,7 +44,7 @@ void update_measured_state_counter() {
 void update_published_state() {
   // status check if we can switch the status.
   // low pass prevents waggling a bit
-  if (measured_state_counter >= THRESHOLD-3) {
+  if (measured_state_counter >= MAX_COUNTER-3) {
     published_state = CLOSED_DOOR;
   } else if (measured_state_counter <= 3) {
     published_state = OPEN_DOOR;
@@ -60,7 +60,7 @@ void update_led_pins() {
     digitalWrite(GREEN_LED_OUTPUT_PIN, HIGH);
   }
 
-  if (measured_state_counter > 3 && measured_state_counter < THRESHOLD - 3) {
+  if (measured_state_counter > 3 && measured_state_counter < MAX_COUNTER - 3) {
     digitalWrite(YELLOW_LED_OUTPUT_PIN, HIGH);
   } else {
     digitalWrite(YELLOW_LED_OUTPUT_PIN, LOW);
