@@ -2,11 +2,11 @@
 // arduino is Duemilanove
 // sensor is a reed sensor
 
-#define REED_SWITCH_INPUT_PIN 13
+const int REED_SWITCH_INPUT_PIN = 13;
 
-#define RED_LED_OUTPUT_PIN 12
-#define YELLOW_LED_OUTPUT_PIN 11
-#define GREEN_LED_OUTPUT_PIN 10
+const int RED_LED_OUTPUT_PIN = 12;
+const int YELLOW_LED_OUTPUT_PIN = 11;
+const int GREEN_LED_OUTPUT_PIN = 10;
 
 void setup(){
  Serial.begin(9600);
