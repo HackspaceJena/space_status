@@ -18,7 +18,7 @@ const int CLOSED_DOOR = 1;
 const int OPEN_DOOR = 0;
 
 int measured_state_counter = MAX_COUNTER / 2;
-int published_state = OPEN_DOOR;
+int reported_state = OPEN_DOOR;
 
 void setup(){
  Serial.begin(9600);
@@ -35,7 +35,7 @@ void loop(){
 
   update_measured_state_counter();
 
-  update_published_state();
+  update_reported_state();
 
   delay(DELAY_TIME);
 
@@ -44,7 +44,7 @@ void loop(){
 
 void print_state() {
   Serial.print(" ");
-  Serial.print(published_state);
+  Serial.print(reported_state);
   Serial.print(" ");
   Serial.println(measured_state_counter);
 }
@@ -57,21 +57,21 @@ void update_measured_state_counter() {
   }
 }
 
-void update_published_state() {
   // status check if we can switch the status.
   // low pass prevents waggling a bit
+void update_reported_state() {
   if (measured_state_counter > UPPER_THRESHOLD) {
-    published_state = CLOSED_DOOR;
+    reported_state = CLOSED_DOOR;
   } else if (measured_state_counter < LOWER_THRESHOLD) {
-    published_state = OPEN_DOOR;
+    reported_state = OPEN_DOOR;
   }
 }
 
 void update_led_pins() {
-  if (published_state == CLOSED_DOOR) {
+  if (reported_state == CLOSED_DOOR) {
     digitalWrite(RED_LED_OUTPUT_PIN, HIGH);
     digitalWrite(GREEN_LED_OUTPUT_PIN, LOW);
-  } else if (published_state == OPEN_DOOR) {
+  } else if (reported_state == OPEN_DOOR) {
     digitalWrite(RED_LED_OUTPUT_PIN, LOW);
     digitalWrite(GREEN_LED_OUTPUT_PIN, HIGH);
   }
