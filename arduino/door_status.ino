@@ -31,7 +31,7 @@ void setup(){
 }
 
 void loop(){
-  print_status();
+  print_state();
 
   update_measured_state_counter();
 
@@ -42,7 +42,7 @@ void loop(){
   update_led_pins();
 }
 
-void print_status() {
+void print_state() {
   Serial.print(" ");
   Serial.print(published_state);
   Serial.print(" ");
