@@ -11,7 +11,7 @@
 
 
 void setup(){
- Serial.begin(9600); 
+ Serial.begin(9600);
  pinMode(IR_INPUT_PIN, INPUT);
 
  pinMode(space_status_red_PIN, OUTPUT);
@@ -28,15 +28,15 @@ int delay_time = 1000;
 
 void loop(){
   int pin_status = 0;
-  
-  
+
+
   pin_status = digitalRead(IR_INPUT_PIN);
   Serial.print(" ");
   Serial.print(space_status_b4);
   Serial.print(" ");
   Serial.println(space_status);
   delay(delay_time);
-  
+
 
   // pin check of the reed sensor and low pass filter
   if (pin_status == 0){
@@ -49,7 +49,7 @@ void loop(){
     }
   }
 
-  
+
   // status check if we can switch the status.
   // low pass prevents waggling a bit
   if (space_status >= threshold-3) {
