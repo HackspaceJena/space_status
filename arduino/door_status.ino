@@ -32,19 +32,10 @@ void print_status() {
 }
 
 void update_space_status() {
-  int pin_status = 0;
-
-  pin_status = digitalRead(REED_SWITCH_INPUT_PIN);
-
-  // pin check of the reed sensor and low pass filter
-  if (pin_status == 0){
-    if (space_status > 0){
-      space_status -= 1;
-    }
-  } else if (pin_status == 1){
-    if (space_status < THRESHOLD){
-      space_status += 1;
-    }
+  if(LOW == digitalRead(REED_SWITCH_INPUT_PIN)) {
+    space_status = max(0, space_status - 1);
+  } else {
+    space_status = min(THRESHOLD, space_status + 1);
   }
 }
 
