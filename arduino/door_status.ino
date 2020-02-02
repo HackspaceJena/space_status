@@ -18,11 +18,11 @@ void setup(){
  pinMode(GREEN_LED_OUTPUT_PIN, OUTPUT);
 }
 
+const int DELAY_TIME = 1000;
 const int THRESHOLD = 20;
 
 int space_status = THRESHOLD / 2;
 int space_status_b4 = 0;
-int delay_time = 1000;
 
 void loop(){
   int pin_status = 0;
@@ -32,7 +32,7 @@ void loop(){
   Serial.print(space_status_b4);
   Serial.print(" ");
   Serial.println(space_status);
-  delay(delay_time);
+  delay(DELAY_TIME);
 
   // pin check of the reed sensor and low pass filter
   if (pin_status == 0){
