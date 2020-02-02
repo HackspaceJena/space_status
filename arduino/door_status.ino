@@ -18,8 +18,9 @@ void setup(){
  pinMode(GREEN_LED_OUTPUT_PIN, OUTPUT);
 }
 
-int threshold = 20;
-int space_status = threshold / 2;
+const int THRESHOLD = 20;
+
+int space_status = THRESHOLD / 2;
 int space_status_b4 = 0;
 int delay_time = 1000;
 
@@ -39,14 +40,14 @@ void loop(){
       space_status -= 1;
     }
   } else if (pin_status == 1){
-    if (space_status < threshold){
+    if (space_status < THRESHOLD){
       space_status += 1;
     }
   }
 
   // status check if we can switch the status.
   // low pass prevents waggling a bit
-  if (space_status >= threshold-3) {
+  if (space_status >= THRESHOLD-3) {
     // closed
     space_status_b4 = 1;
   } else if (space_status <= 3) {
@@ -65,7 +66,7 @@ void loop(){
     digitalWrite(GREEN_LED_OUTPUT_PIN, HIGH);
   }
 
-  if (space_status > 3 && space_status < threshold - 3) {
+  if (space_status > 3 && space_status < THRESHOLD - 3) {
     digitalWrite(YELLOW_LED_OUTPUT_PIN, HIGH);
   } else {
     digitalWrite(YELLOW_LED_OUTPUT_PIN, LOW);
