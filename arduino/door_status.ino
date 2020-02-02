@@ -46,41 +46,29 @@ void setup(){
 }
 
 void loop(){
-  print_state();
-
-  update_measured_state_counter();
-
-  update_reported_state();
-
-  delay(DELAY_TIME);
-
-  update_led_pins();
-}
-
-void print_state() {
+  // print state
   Serial.print(" ");
   Serial.print(reported_state);
   Serial.print(" ");
   Serial.println(measured_state_counter);
-}
 
-void update_measured_state_counter() {
+  // update measured state
   if(LOW == digitalRead(REED_SWITCH_INPUT_PIN)) {
     measured_state_counter = max(0, measured_state_counter - 1);
   } else {
     measured_state_counter = min(THRESHOLD, measured_state_counter + 1);
   }
-}
 
-void update_reported_state() {
+  // update reported state
   if (measured_state_counter > UPPER_THRESHOLD) {
     reported_state = CLOSED_DOOR;
   } else if (measured_state_counter < LOWER_THRESHOLD) {
     reported_state = OPEN_DOOR;
   }
-}
 
-void update_led_pins() {
+  delay(DELAY_TIME);
+
+  // update led pins
   if (reported_state == CLOSED_DOOR) {
     digitalWrite(RED_LED_OUTPUT_PIN, HIGH);
     digitalWrite(GREEN_LED_OUTPUT_PIN, LOW);
@@ -88,7 +76,6 @@ void update_led_pins() {
     digitalWrite(RED_LED_OUTPUT_PIN, LOW);
     digitalWrite(GREEN_LED_OUTPUT_PIN, HIGH);
   }
-
   if (measured_state_counter == constrain(measured_state_counter, LOWER_THRESHOLD, UPPER_THRESHOLD)) {
     digitalWrite(YELLOW_LED_OUTPUT_PIN, HIGH);
   } else {
