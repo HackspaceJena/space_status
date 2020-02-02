@@ -30,6 +30,18 @@ void setup(){
  pinMode(GREEN_LED_OUTPUT_PIN, OUTPUT);
 }
 
+void loop(){
+  print_status();
+
+  update_measured_state_counter();
+
+  update_published_state();
+
+  delay(DELAY_TIME);
+
+  update_led_pins();
+}
+
 void print_status() {
   Serial.print(" ");
   Serial.print(published_state);
@@ -69,16 +81,4 @@ void update_led_pins() {
   } else {
     digitalWrite(YELLOW_LED_OUTPUT_PIN, LOW);
   }
-}
-
-void loop(){
-  print_status();
-
-  update_measured_state_counter();
-
-  update_published_state();
-
-  delay(DELAY_TIME);
-
-  update_led_pins();
 }
