@@ -23,30 +23,30 @@ const int THRESHOLD = 20;
 const int CLOSED_DOOR = 1;
 const int OPEN_DOOR = 0;
 
-int space_status = THRESHOLD / 2;
+int measured_state_counter = THRESHOLD / 2;
 int published_state = OPEN_DOOR;
 
 void print_status() {
   Serial.print(" ");
   Serial.print(published_state);
   Serial.print(" ");
-  Serial.println(space_status);
+  Serial.println(measured_state_counter);
 }
 
-void update_space_status() {
+void update_measured_state_counter() {
   if(LOW == digitalRead(REED_SWITCH_INPUT_PIN)) {
-    space_status = max(0, space_status - 1);
+    measured_state_counter = max(0, measured_state_counter - 1);
   } else {
-    space_status = min(THRESHOLD, space_status + 1);
+    measured_state_counter = min(THRESHOLD, measured_state_counter + 1);
   }
 }
 
 void update_published_state() {
   // status check if we can switch the status.
   // low pass prevents waggling a bit
-  if (space_status >= THRESHOLD-3) {
+  if (measured_state_counter >= THRESHOLD-3) {
     published_state = CLOSED_DOOR;
-  } else if (space_status <= 3) {
+  } else if (measured_state_counter <= 3) {
     published_state = OPEN_DOOR;
   }
 }
@@ -54,7 +54,7 @@ void update_published_state() {
 void loop(){
   print_status();
 
-  update_space_status();
+  update_measured_state_counter();
 
   update_published_state();
 
@@ -69,7 +69,7 @@ void loop(){
     digitalWrite(GREEN_LED_OUTPUT_PIN, HIGH);
   }
 
-  if (space_status > 3 && space_status < THRESHOLD - 3) {
+  if (measured_state_counter > 3 && measured_state_counter < THRESHOLD - 3) {
     digitalWrite(YELLOW_LED_OUTPUT_PIN, HIGH);
   } else {
     digitalWrite(YELLOW_LED_OUTPUT_PIN, LOW);
