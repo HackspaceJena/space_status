@@ -32,7 +32,6 @@ void loop(){
   Serial.print(space_status_b4);
   Serial.print(" ");
   Serial.println(space_status);
-  delay(DELAY_TIME);
 
   // pin check of the reed sensor and low pass filter
   if (pin_status == 0){
@@ -54,6 +53,8 @@ void loop(){
     // open
     space_status_b4 = 0;
   }
+
+  delay(DELAY_TIME);
 
   // ampel / traffic light signals
   if (space_status_b4 == 1) {
