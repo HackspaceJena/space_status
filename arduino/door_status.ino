@@ -1,6 +1,21 @@
-// door status on arduino
-// arduino is Duemilanove
-// sensor is a reed sensor
+/* Door state monitoring logic for Arduino Duemilanove
+ *
+ * This script periodically reads the state of a reed switch
+ * (REED_SWITCH_INPUT_PIN) to determine the locked state of door.
+ *
+ * The switch sometimes reports the wrong state for brief periods of time.
+ * This script filters out these quick changes. A counter
+ * (measured_state_counter) is decremented or incremented within a range
+ * from 0 to MAX_COUNTER depending on the state of the reed switch in each
+ * iteration of the loop. The reported state (reported_state via
+ * RED_LED_OUTPUT_PIN and GREEN_LED_OUTPUT_PIN) is only changed, if the counter
+ * reaches its lower (0 to LOWER_THRESHOLD) or upper end (UPPER_THRESHOLD to
+ * MAX_COUNTER). The scripts also reports when the state counter is between the
+ * lower and upper end (YELLOW_LED_OUTPUT_PIN).
+ *
+ * State counter and reported state are written to the serial port in each
+ * iteration for debugging purposes.
+ */
 
 const int REED_SWITCH_INPUT_PIN = 13;
 
@@ -57,8 +72,6 @@ void update_measured_state_counter() {
   }
 }
 
-  // status check if we can switch the status.
-  // low pass prevents waggling a bit
 void update_reported_state() {
   if (measured_state_counter > UPPER_THRESHOLD) {
     reported_state = CLOSED_DOOR;
