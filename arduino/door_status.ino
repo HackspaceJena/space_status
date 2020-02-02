@@ -8,8 +8,6 @@
 #define space_status_yellow_PIN 11
 #define space_status_green_PIN 10
 
-
-
 void setup(){
  Serial.begin(9600);
  pinMode(IR_INPUT_PIN, INPUT);
@@ -19,16 +17,13 @@ void setup(){
  pinMode(space_status_green_PIN, OUTPUT);
 }
 
-
 int threshold = 20;
 int space_status = threshold / 2;
 int space_status_b4 = 0;
 int delay_time = 1000;
 
-
 void loop(){
   int pin_status = 0;
-
 
   pin_status = digitalRead(IR_INPUT_PIN);
   Serial.print(" ");
@@ -36,7 +31,6 @@ void loop(){
   Serial.print(" ");
   Serial.println(space_status);
   delay(delay_time);
-
 
   // pin check of the reed sensor and low pass filter
   if (pin_status == 0){
@@ -49,7 +43,6 @@ void loop(){
     }
   }
 
-
   // status check if we can switch the status.
   // low pass prevents waggling a bit
   if (space_status >= threshold-3) {
@@ -59,7 +52,6 @@ void loop(){
     // open
     space_status_b4 = 0;
   }
-
 
   // ampel / traffic light signals
   if (space_status_b4 == 1) {
