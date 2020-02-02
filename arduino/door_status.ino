@@ -1,80 +1,84 @@
-// door status on arduino
-// arduino is Duemilanove
-// sensor is a reed sensor
+/* Door state monitoring logic for Arduino Duemilanove
+ *
+ * This script periodically reads the state of a reed switch
+ * (REED_SWITCH_INPUT_PIN) to determine the locked state of door.
+ *
+ * The switch sometimes reports the wrong state for brief periods of time.
+ * This script filters out these quick changes. A counter
+ * (measured_state_counter) is decremented or incremented within a range
+ * from 0 to MAX_COUNTER depending on the state of the reed switch in each
+ * iteration of the loop. The reported state (reported_state via
+ * RED_LED_OUTPUT_PIN and GREEN_LED_OUTPUT_PIN) is only changed, if the counter
+ * reaches its lower (0 to LOWER_THRESHOLD) or upper end (UPPER_THRESHOLD to
+ * MAX_COUNTER). The scripts also reports when the state counter is between the
+ * lower and upper end (YELLOW_LED_OUTPUT_PIN).
+ *
+ * State counter and reported state are written to the serial port in each
+ * iteration for debugging purposes.
+ */
 
-#define IR_INPUT_PIN 13
+const int REED_SWITCH_INPUT_PIN = 13;
 
-#define space_status_red_PIN 12
-#define space_status_yellow_PIN 11
-#define space_status_green_PIN 10
+const int RED_LED_OUTPUT_PIN = 12;
+const int YELLOW_LED_OUTPUT_PIN = 11;
+const int GREEN_LED_OUTPUT_PIN = 10;
 
+const int DELAY_TIME = 1000;
 
+const int MAX_COUNTER = 20;
+const int LOWER_THRESHOLD = 4;
+const int UPPER_THRESHOLD = MAX_COUNTER - LOWER_THRESHOLD;
+
+const int CLOSED_DOOR = 1;
+const int OPEN_DOOR = 0;
+
+int measured_state_counter = MAX_COUNTER / 2;
+int reported_state = OPEN_DOOR;
 
 void setup(){
- Serial.begin(9600); 
- pinMode(IR_INPUT_PIN, INPUT);
+ Serial.begin(9600);
 
- pinMode(space_status_red_PIN, OUTPUT);
- pinMode(space_status_yellow_PIN, OUTPUT);
- pinMode(space_status_green_PIN, OUTPUT);
+ pinMode(REED_SWITCH_INPUT_PIN, INPUT);
+
+ pinMode(RED_LED_OUTPUT_PIN, OUTPUT);
+ pinMode(YELLOW_LED_OUTPUT_PIN, OUTPUT);
+ pinMode(GREEN_LED_OUTPUT_PIN, OUTPUT);
 }
 
-
-int threshold = 20;
-int space_status = threshold / 2;
-int space_status_b4 = 0;
-int delay_time = 1000;
-
-
 void loop(){
-  int pin_status = 0;
-  
-  
-  pin_status = digitalRead(IR_INPUT_PIN);
+  // print state
   Serial.print(" ");
-  Serial.print(space_status_b4);
+  Serial.print(reported_state);
   Serial.print(" ");
-  Serial.println(space_status);
-  delay(delay_time);
-  
+  Serial.println(measured_state_counter);
 
-  // pin check of the reed sensor and low pass filter
-  if (pin_status == 0){
-    if (space_status > 0){
-      space_status -= 1;
-    }
-  } else if (pin_status == 1){
-    if (space_status < threshold){
-      space_status += 1;
-    }
-  }
-
-  
-  // status check if we can switch the status.
-  // low pass prevents waggling a bit
-  if (space_status >= threshold-3) {
-    // closed
-    space_status_b4 = 1;
-  } else if (space_status <= 3) {
-    // open
-    space_status_b4 = 0;
-  }
-
-
-  // ampel / traffic light signals
-  if (space_status_b4 == 1) {
-    // closed
-    digitalWrite(space_status_red_PIN, HIGH);
-    digitalWrite(space_status_green_PIN, LOW);
-  } else if (space_status_b4 == 0) {
-    // open
-    digitalWrite(space_status_red_PIN, LOW);
-    digitalWrite(space_status_green_PIN, HIGH);
-  }
-
-  if (space_status > 3 && space_status < threshold - 3) {
-    digitalWrite(space_status_yellow_PIN, HIGH);
+  // update measured state
+  if(LOW == digitalRead(REED_SWITCH_INPUT_PIN)) {
+    measured_state_counter = max(0, measured_state_counter - 1);
   } else {
-    digitalWrite(space_status_yellow_PIN, LOW);
+    measured_state_counter = min(THRESHOLD, measured_state_counter + 1);
+  }
+
+  // update reported state
+  if (measured_state_counter > UPPER_THRESHOLD) {
+    reported_state = CLOSED_DOOR;
+  } else if (measured_state_counter < LOWER_THRESHOLD) {
+    reported_state = OPEN_DOOR;
+  }
+
+  delay(DELAY_TIME);
+
+  // update led pins
+  if (reported_state == CLOSED_DOOR) {
+    digitalWrite(RED_LED_OUTPUT_PIN, HIGH);
+    digitalWrite(GREEN_LED_OUTPUT_PIN, LOW);
+  } else if (reported_state == OPEN_DOOR) {
+    digitalWrite(RED_LED_OUTPUT_PIN, LOW);
+    digitalWrite(GREEN_LED_OUTPUT_PIN, HIGH);
+  }
+  if (measured_state_counter == constrain(measured_state_counter, LOWER_THRESHOLD, UPPER_THRESHOLD)) {
+    digitalWrite(YELLOW_LED_OUTPUT_PIN, HIGH);
+  } else {
+    digitalWrite(YELLOW_LED_OUTPUT_PIN, LOW);
   }
 }
