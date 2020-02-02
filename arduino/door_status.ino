@@ -31,9 +31,7 @@ void print_status() {
   Serial.println(space_status);
 }
 
-void loop(){
-  print_status();
-
+void update_space_status() {
   int pin_status = 0;
 
   pin_status = digitalRead(REED_SWITCH_INPUT_PIN);
@@ -48,6 +46,12 @@ void loop(){
       space_status += 1;
     }
   }
+}
+
+void loop(){
+  print_status();
+
+  update_space_status();
 
   // status check if we can switch the status.
   // low pass prevents waggling a bit
