@@ -51,16 +51,7 @@ void update_published_state() {
   }
 }
 
-void loop(){
-  print_status();
-
-  update_measured_state_counter();
-
-  update_published_state();
-
-  delay(DELAY_TIME);
-
-  // ampel / traffic light signals
+void update_led_pins() {
   if (published_state == CLOSED_DOOR) {
     digitalWrite(RED_LED_OUTPUT_PIN, HIGH);
     digitalWrite(GREEN_LED_OUTPUT_PIN, LOW);
@@ -74,4 +65,16 @@ void loop(){
   } else {
     digitalWrite(YELLOW_LED_OUTPUT_PIN, LOW);
   }
+}
+
+void loop(){
+  print_status();
+
+  update_measured_state_counter();
+
+  update_published_state();
+
+  delay(DELAY_TIME);
+
+  update_led_pins();
 }
