@@ -39,11 +39,7 @@ void update_space_status() {
   }
 }
 
-void loop(){
-  print_status();
-
-  update_space_status();
-
+void update_space_status_b4() {
   // status check if we can switch the status.
   // low pass prevents waggling a bit
   if (space_status >= THRESHOLD-3) {
@@ -53,6 +49,14 @@ void loop(){
     // open
     space_status_b4 = 0;
   }
+}
+
+void loop(){
+  print_status();
+
+  update_space_status();
+
+  update_space_status_b4();
 
   delay(DELAY_TIME);
 
