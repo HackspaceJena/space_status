@@ -10,6 +10,7 @@
 
 void setup(){
  Serial.begin(9600);
+
  pinMode(REED_SWITCH_INPUT_PIN, INPUT);
 
  pinMode(RED_LED_OUTPUT_PIN, OUTPUT);
