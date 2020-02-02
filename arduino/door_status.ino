@@ -4,17 +4,17 @@
 
 #define REED_SWITCH_INPUT_PIN 13
 
-#define space_status_red_PIN 12
-#define space_status_yellow_PIN 11
-#define space_status_green_PIN 10
+#define SPACE_STATUS_RED_PIN 12
+#define SPACE_STATUS_YELLOW_PIN 11
+#define SPACE_STATUS_GREEN_PIN 10
 
 void setup(){
  Serial.begin(9600);
  pinMode(REED_SWITCH_INPUT_PIN, INPUT);
 
- pinMode(space_status_red_PIN, OUTPUT);
- pinMode(space_status_yellow_PIN, OUTPUT);
- pinMode(space_status_green_PIN, OUTPUT);
+ pinMode(SPACE_STATUS_RED_PIN, OUTPUT);
+ pinMode(SPACE_STATUS_YELLOW_PIN, OUTPUT);
+ pinMode(SPACE_STATUS_GREEN_PIN, OUTPUT);
 }
 
 int threshold = 20;
@@ -56,17 +56,17 @@ void loop(){
   // ampel / traffic light signals
   if (space_status_b4 == 1) {
     // closed
-    digitalWrite(space_status_red_PIN, HIGH);
-    digitalWrite(space_status_green_PIN, LOW);
+    digitalWrite(SPACE_STATUS_RED_PIN, HIGH);
+    digitalWrite(SPACE_STATUS_GREEN_PIN, LOW);
   } else if (space_status_b4 == 0) {
     // open
-    digitalWrite(space_status_red_PIN, LOW);
-    digitalWrite(space_status_green_PIN, HIGH);
+    digitalWrite(SPACE_STATUS_RED_PIN, LOW);
+    digitalWrite(SPACE_STATUS_GREEN_PIN, HIGH);
   }
 
   if (space_status > 3 && space_status < threshold - 3) {
-    digitalWrite(space_status_yellow_PIN, HIGH);
+    digitalWrite(SPACE_STATUS_YELLOW_PIN, HIGH);
   } else {
-    digitalWrite(space_status_yellow_PIN, LOW);
+    digitalWrite(SPACE_STATUS_YELLOW_PIN, LOW);
   }
 }
