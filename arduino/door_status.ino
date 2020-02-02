@@ -2,7 +2,7 @@
 // arduino is Duemilanove
 // sensor is a reed sensor
 
-#define IR_INPUT_PIN 13
+#define REED_SWITCH_INPUT_PIN 13
 
 #define space_status_red_PIN 12
 #define space_status_yellow_PIN 11
@@ -10,7 +10,7 @@
 
 void setup(){
  Serial.begin(9600);
- pinMode(IR_INPUT_PIN, INPUT);
+ pinMode(REED_SWITCH_INPUT_PIN, INPUT);
 
  pinMode(space_status_red_PIN, OUTPUT);
  pinMode(space_status_yellow_PIN, OUTPUT);
@@ -25,7 +25,7 @@ int delay_time = 1000;
 void loop(){
   int pin_status = 0;
 
-  pin_status = digitalRead(IR_INPUT_PIN);
+  pin_status = digitalRead(REED_SWITCH_INPUT_PIN);
   Serial.print(" ");
   Serial.print(space_status_b4);
   Serial.print(" ");
