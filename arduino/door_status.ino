@@ -24,14 +24,19 @@ const int THRESHOLD = 20;
 int space_status = THRESHOLD / 2;
 int space_status_b4 = 0;
 
-void loop(){
-  int pin_status = 0;
-
-  pin_status = digitalRead(REED_SWITCH_INPUT_PIN);
+void print_status() {
   Serial.print(" ");
   Serial.print(space_status_b4);
   Serial.print(" ");
   Serial.println(space_status);
+}
+
+void loop(){
+  print_status();
+
+  int pin_status = 0;
+
+  pin_status = digitalRead(REED_SWITCH_INPUT_PIN);
 
   // pin check of the reed sensor and low pass filter
   if (pin_status == 0){
