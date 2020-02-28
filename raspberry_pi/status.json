@@ -179,7 +179,7 @@
         {
             "text": {
 			    "universal" : "This closing tweet has been presented by #tweepy + #mastodon.py! Thank you communities (https://discord.gg/bJvqnhg), get the code @github https://github.com/tweepy/tweepy and https://github.com/halcy/Mastodon.py",
-                "mastodon" : "This clsoing toott has been presented by mastodon.py! Thank you community, get the code @github https://github.com/halcy/Mastodon.py"
+                "mastodon" : "This closing toot has been presented by mastodon.py! Thank you community, get the code @github https://github.com/halcy/Mastodon.py"
             
 				}
         },
@@ -205,6 +205,11 @@
             "text": {
                 "universal" : "Go, but go save your Internet! #saveyourinternet #syijena @syijena",
 		"mastodon" : "Go, but go save your Internet! #saveyourinternet #syijena"
+            }
+        },
+		{
+            "text": {
+                "universal" : "Space is closded. But there's one more thing! #TheThingsNetwork Jena @ttn_jena"
             }
         }
     ],
@@ -342,6 +347,11 @@
 	{
             "text": {
                 "universal" : "Come to Krautspace, we have #cookies!"
+	    }
+        },
+	{
+            "text": {
+                "universal" : "Ger\u00e4te alle L\u00e4nder vernetzt euch!"
 	    }
         }
     ],
